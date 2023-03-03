@@ -37,7 +37,13 @@ export PATH=$PATH:$HOME/.local/bin
 # My Alias
 alias vim=nvim
 alias ls=exa
+alias virc='vim ~/.zshrc && source ~/.zshrc'
+alias vihypr='vim ~/.config/hypr/hyprland.conf'
+alias vifzf='vim $(fzf)'
 
 export NVM_DIR="$HOME/.nvm"
 [ -s "$NVM_DIR/nvm.sh" ] && \. "$NVM_DIR/nvm.sh"  # This loads nvm
 [ -s "$NVM_DIR/bash_completion" ] && \. "$NVM_DIR/bash_completion"  # This loads nvm bash_completion
+
+export FZF_DEFAULT_COMMAND='find -L'
+export TERM=xterm-kitty
