@@ -4,6 +4,9 @@
 if [[ -r "${XDG_CACHE_HOME:-$HOME/.cache}/p10k-instant-prompt-${(%):-%n}.zsh" ]]; then
   source "${XDG_CACHE_HOME:-$HOME/.cache}/p10k-instant-prompt-${(%):-%n}.zsh"
 fi
+export NVM_DIR="$([ -z "${XDG_CONFIG_HOME-}" ] && printf %s "${HOME}/.nvm" || printf %s "${XDG_CONFIG_HOME}/nvm")"
+[ -s "$NVM_DIR/nvm.sh" ] && \. "$NVM_DIR/nvm.sh" # This loads nvm
+
 
 source ~/.zplug/init.zsh
 source /usr/share/zsh-theme-powerlevel10k/powerlevel10k.zsh-theme
@@ -23,7 +26,8 @@ zplug "zsh-users/zsh-history-substring-search" #,defer:3,on:"zsh-users/zsh-synta
 zplug "plugins/extract", from:oh-my-zsh
 #zplug "lib/completion", from:oh-my-zsh
 #zplug "plugins/sudo", from:oh-my-zsh
-zplug "b4b4r07/enhancd", use:init.sh
+#zplug "b4b4r07/enhancd", use:init.sh
+
 
 
 zplug load
@@ -31,19 +35,21 @@ zplug load
 # To customize prompt, run `p10k configure` or edit ~/.p10k.zsh.
 [[ ! -f ~/.p10k.zsh ]] || source ~/.p10k.zsh
 
-export PATH=$PATH:$HOME/.local/bin
 
 
 # My Alias
 alias vim=nvim
 alias ls=exa
+alias ll=ls -l
 alias virc='vim ~/.zshrc && source ~/.zshrc'
 alias vihypr='vim ~/.config/hypr/hyprland.conf'
 alias vifzf='vim $(fzf)'
+alias icat='kitty +kitten icat'
+function  hyprs() {rg $1 ~/.config/hypr/hyprland.conf}
 
-export NVM_DIR="$HOME/.nvm"
-[ -s "$NVM_DIR/nvm.sh" ] && \. "$NVM_DIR/nvm.sh"  # This loads nvm
-[ -s "$NVM_DIR/bash_completion" ] && \. "$NVM_DIR/bash_completion"  # This loads nvm bash_completion
 
+export PATH=$PATH:$HOME/.local/bin
+export MCFLY_FUZZY=2
 export FZF_DEFAULT_COMMAND='find -L'
 export TERM=xterm-kitty
+
