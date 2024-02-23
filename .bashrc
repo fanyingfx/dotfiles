@@ -134,3 +134,4 @@ else
         echo "Start Hyprland with command Hyprland"
     fi
 fi
+. "$HOME/.cargo/env"
