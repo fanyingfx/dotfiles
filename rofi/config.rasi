@@ -11,8 +11,8 @@
 
 /* ---- Configuration ---- */
 configuration {
-    modi:                       "drun,run";
-    font:                       "Fira Sans Bold 12";
+    modi:                       "drun,window";
+    font:                       "Sarasa Gothic SC SemiBold 10";
     show-icons:                 true;
     icon-theme:                 "kora";
     display-drun:               "APPS";
@@ -24,7 +24,7 @@ configuration {
     me-select-entry:            "";
     me-accept-entry:            "MousePrimary";
     window-format:              "{w} · {c} · {t}";
-    dpi: 192;
+    dpi: 96;
     
 }
 
@@ -34,7 +34,7 @@ configuration {
 
 /* ---- Window ---- */
 window {
-    width:                        1800px;
+    width:                        800px;
     x-offset:                     0px;
     y-offset:                     0px;
     spacing:                      0px;
