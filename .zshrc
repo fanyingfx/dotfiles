@@ -15,7 +15,7 @@ PS1='[\u@\h \W]\$ '
 
 # Define Editor
 export EDITOR=nvim
-
+export PAGER=nvimpager
 # -----------------------------------------------------
 # ALIASES
 # -----------------------------------------------------
@@ -26,6 +26,7 @@ alias pf='pfetch'
 alias ls='eza -a --icons'
 alias ll='eza -al --icons'
 alias lt='eza -a --tree --level=1 --icons'
+alias less=nvimpager
 alias shutdown='systemctl poweroff'
 alias v='$EDITOR'
 alias ts='~/dotfiles/scripts/snapshot.sh'
