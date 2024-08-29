@@ -1,0 +1,8 @@
+[Desktop Entry]
+Name=Turing Complete
+Comment=Play this game on Steam
+Exec=steam steam://rungameid/1444480
+Icon=steam_icon_1444480
+Terminal=false
+Type=Application
+Categories=Game;
