@@ -35,6 +35,8 @@ zinit ice as"command" from"gh-r" \
           atclone"./starship init zsh > init.zsh; ./starship completions zsh > _starship" \
           atpull"%atclone" src"init.zsh"
 zinit light starship/starship
+zinit load atuinsh/atuin
+
 
 HISTFILE=~/.zsh_history
 HISTSIZE=1000
@@ -50,6 +52,10 @@ setopt SHARE_HISTORY             # Share history between all sessions.
 # END HISTORY
 setopt appendhistory
 export ELECTRON_OZONE_PLATFORM_HINT=auto
+set -o emacs
+export EDITOR=/usr/bin/nvim
+export VISUAL=/usr/bin/nvim
+alias virc="chzemoi edit ~/.zshrc && source ~/.zshrc"
 
 
 
