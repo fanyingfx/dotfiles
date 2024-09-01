@@ -66,6 +66,6 @@ format = '[[  $time ](fg:#a0a9cb bg:#1d2230)]($style)'
 
 [status]
 style = 'fg:red'
-format = '<[$status]($style)>'
+format = '\[[$status]($style)\]'
 map_symbol = true
 disabled = false
