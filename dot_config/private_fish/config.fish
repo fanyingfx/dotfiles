@@ -21,7 +21,7 @@ set -x EDITOR /usr/bin/nvim
 
 function virc
 set config_path $HOME/.config/fish/config.fish
-nvim $config_path
+chezmoi edit $config_path
 source $config_path
 end
 
