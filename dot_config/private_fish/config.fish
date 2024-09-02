@@ -16,6 +16,8 @@ string match -q "$TERM_PROGRAM" "vscode"
 and . (code --locate-shell-integration-path fish)
 set -x GOPATH $HOME/.go
 fish_ssh_agent
+set -x VISUAL /usr/bin/nvim
+set -x EDITOR /usr/bin/nvim
 
 function virc
 set config_path $HOME/.config/fish/config.fish
