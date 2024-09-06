@@ -37,6 +37,7 @@ zinit ice as"command" from"gh-r" \
 zinit light starship/starship
 zinit load atuinsh/atuin
 
+unalias zi
 eval "$(zoxide init zsh)"
 
 
