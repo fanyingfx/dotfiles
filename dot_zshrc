@@ -37,6 +37,8 @@ zinit ice as"command" from"gh-r" \
 zinit light starship/starship
 zinit load atuinsh/atuin
 
+eval "$(zoxide init zsh)"
+
 
 HISTFILE=~/.zsh_history
 HISTSIZE=1000
