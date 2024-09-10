@@ -54,7 +54,7 @@ setopt HIST_SAVE_NO_DUPS         # Do not write a duplicate event to the history
 # END HISTORY
 setopt appendhistory
 export ELECTRON_OZONE_PLATFORM_HINT=auto
-set -o vi
+set -o emacs
 export EDITOR=/usr/bin/nvim
 export VISUAL=/usr/bin/nvim
 alias virc="chezmoi edit ~/.zshrc && source ~/.zshrc"
