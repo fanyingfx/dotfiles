@@ -58,7 +58,7 @@ export ELECTRON_OZONE_PLATFORM_HINT=auto
 set -o emacs
 export EDITOR=/usr/bin/nvim
 export VISUAL=/usr/bin/nvim
-alias virc="chezmoi edit ~/.zshrc && source ~/.zshrc"
+alias virc="chezmoi edit --apply ~/.zshrc && source ~/.zshrc"
 function yy() {
 	local tmp="$(mktemp -t "yazi-cwd.XXXXXX")"
 	yazi "$@" --cwd-file="$tmp"
