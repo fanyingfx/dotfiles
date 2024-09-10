@@ -20,8 +20,8 @@ set -x VISUAL /usr/bin/nvim
 set -x EDITOR /usr/bin/nvim
 
 function virc
-set config_path $HOME/.config/fish/config.fish
-chezmoi edit $config_path
-source $config_path
+    set config_path $HOME/.config/fish/config.fish
+    chezmoi edit --apply $config_path
+    source $config_path
 end
 
