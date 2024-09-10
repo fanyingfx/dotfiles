@@ -1,4 +1,4 @@
-
+declare -A ZINIT
 ZINIT[NO_ALIASES]=1
 ### Added by Zinit's installer
 if [[ ! -f $HOME/.local/share/zinit/zinit.git/zinit.zsh ]]; then
