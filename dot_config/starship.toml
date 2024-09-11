@@ -1,4 +1,4 @@
-format = """[ 󰣇 ](bg:#a3aed2 fg:#090c0c)\
+format = """[ 󰣇  ](bg:#a3aed2 fg:#090c0c)\
 [](bg:#769ff0 fg:#a3aed2)\
 $directory\
 [](fg:#769ff0 bg:#394260)\
@@ -9,6 +9,7 @@ $nodejs\
 $rust\
 $golang\
 $php\
+$python\
 [](fg:#212736 bg:#1d2230)\
 $time\
 [ ](fg:#1d2230)\
@@ -54,9 +55,18 @@ style = "bg:#212736"
 format = '[[ $symbol ($version) ](fg:#769ff0 bg:#212736)]($style)'
 
 [php]
-symbol = ""
+symbol = " "
 style = "bg:#212736"
 format = '[[ $symbol ($version) ](fg:#769ff0 bg:#212736)]($style)'
+
+[python]
+symbol = " "
+style = "bg:#212736"
+# format='[${symbol}${pyenv_prefix}(${version} )(\($virtualenv\) )]($style)'
+format = "[ ${symbol} $virtualenv ${version}]($style) "
+python_binary=['python','python3']
+pyenv_version_name = false
+
 
 [time]
 disabled = false
