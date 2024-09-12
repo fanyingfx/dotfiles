@@ -9,6 +9,7 @@ end
 set -U fish_greeting
 set -x MANPAGER 'nvim +Man!'
 set -x MANWIDTH 999
+set -x VIRTUAL_ENV_DISABLE_PROMPT 1
 
 #export MANWIDTH=999
 # https://code.visualstudio.com/docs/terminal/shell-integration
