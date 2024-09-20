@@ -60,6 +60,7 @@ set -o emacs
 export EDITOR=/usr/bin/nvim
 export VISUAL=/usr/bin/nvim
 alias virc="chezmoi edit --apply ~/.zshrc && source ~/.zshrc"
+alias vim=nvim
 function yy() {
 	local tmp="$(mktemp -t "yazi-cwd.XXXXXX")"
 	yazi "$@" --cwd-file="$tmp"
