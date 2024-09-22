@@ -4,6 +4,7 @@ if status is-interactive
     alias ls  eza
     alias vim nvim
     alias edit 'chezmoi edit --apply'
+    alias chcd 'chezmoi cd'
     atuin init fish | source
     zoxide init fish | source
 end
