@@ -14,6 +14,10 @@ set -x MANWIDTH 999
 set -x VIRTUAL_ENV_DISABLE_PROMPT 1
 
 set -x ELECTRON_OZONE_PLATFORM_HINT auto
+#fish_vi_key_bindings
+#bind -M insert \cp history-search-backward
+#bind -M insert \cn history-search-forward
+#bind -M insert \ce end-of-line
 
 #export MANWIDTH=999
 # https://code.visualstudio.com/docs/terminal/shell-integration
