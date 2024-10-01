@@ -62,6 +62,7 @@ export VISUAL=/usr/bin/nvim
 alias virc="chezmoi edit --apply ~/.zshrc && source ~/.zshrc"
 alias vim=nvim
 alias coder='code -r'
+alias open='xdg-open'
 function yy() {
 	local tmp="$(mktemp -t "yazi-cwd.XXXXXX")"
 	yazi "$@" --cwd-file="$tmp"
