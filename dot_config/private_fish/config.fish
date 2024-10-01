@@ -5,6 +5,7 @@ if status is-interactive
     alias vim nvim
     alias edit 'chezmoi edit --apply'
     alias chcd 'chezmoi cd'
+    alias open 'xdg-open'
     atuin init fish | source
     zoxide init fish | source
 end
