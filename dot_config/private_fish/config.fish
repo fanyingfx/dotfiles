@@ -15,7 +15,6 @@ set -x VIRTUAL_ENV_DISABLE_PROMPT 1
 
 set -x ELECTRON_OZONE_PLATFORM_HINT auto
 fish_add_path ~/.config/emacs/bin
-fish_add_path ~/scripts
 #fish_default_key_bindings
 #fish_vi_key_bindings
 #bind -M insert \cp history-search-backward
@@ -30,6 +29,7 @@ set -x GOPATH $HOME/.go
 fish_ssh_agent
 set -x VISUAL /usr/bin/nvim
 set -x EDITOR /usr/bin/nvim
+alias mount_smb='sudo ~/scripts/mount_smb.sh'
 
 function virc
     set config_path $HOME/.config/fish/config.fish
