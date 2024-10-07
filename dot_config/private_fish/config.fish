@@ -7,6 +7,7 @@ if status is-interactive
     alias chcd 'chezmoi cd'
     alias open 'xdg-open'
     alias restart_plasma 'killall plasmashell && kstart plasmashell'
+    alias cl 'clear'
     atuin init fish | source
     zoxide init fish | source
 end
