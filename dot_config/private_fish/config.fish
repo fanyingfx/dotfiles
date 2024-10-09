@@ -8,6 +8,7 @@ if status is-interactive
     alias open 'xdg-open'
     alias restart_plasma 'killall plasmashell && kstart plasmashell'
     alias cl 'clear'
+    alias gd 'goldendict'
     atuin init fish | source
     zoxide init fish | source
 end
