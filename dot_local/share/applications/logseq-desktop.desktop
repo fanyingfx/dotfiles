@@ -2,7 +2,7 @@
 Type=Application
 Name=Logseq
 Comment=Privacy-first, open-source platform for knowledge sharing and management
-Exec=logseq --ozone-platform=wayland %u
+Exec=logseq --ozone-platform=wayland --enable-wayland-ime  %u
 Icon=logseq
 Terminal=false
 StartupNotify=true
