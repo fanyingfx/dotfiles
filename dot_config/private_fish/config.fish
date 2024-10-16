@@ -50,3 +50,12 @@ function yy
 	end
 	rm -f -- "$tmp"
 end
+function fish_prompt
+    set -l last_exit $status
+    printf "\e]133;L\a"
+    printf "\e]133;D;%s\a" $last_exit
+    printf "\e]133;A\a"
+    printf "[%s@%s %s] " (whoami) (hostname) (pwd)
+    printf "\e]133;B\a"
+end
+
