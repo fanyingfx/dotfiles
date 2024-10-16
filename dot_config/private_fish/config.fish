@@ -1,3 +1,4 @@
+# https://docs.kde.org/stable5/en/konsole/konsole/semantic-shell-integration.html
 function fish_prompt
     set -l last_exit $status
     printf "\e]133;L\a"
