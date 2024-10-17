@@ -9,7 +9,6 @@ if status is-interactive
     alias restart_plasma 'killall plasmashell && kstart plasmashell'
     alias cl 'clear'
     alias gd 'goldendict'
-    alias gc 'git clone'
     atuin init fish | source
     zoxide init fish | source
 end
