@@ -19,6 +19,8 @@ set -x VIRTUAL_ENV_DISABLE_PROMPT 1
 
 set -x ELECTRON_OZONE_PLATFORM_HINT auto
 fish_add_path ~/.config/emacs/bin
+fish_add_path ~/.ghcup/bin
+
 #fish_default_key_bindings
 #fish_vi_key_bindings
 #bind -M insert \cp history-search-backward
