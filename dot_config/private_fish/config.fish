@@ -51,4 +51,12 @@ function yy
 	end
 	rm -f -- "$tmp"
 end
+function tree
+    set argc (count $argv)
+    if test $argc -eq 0
+	eza -T --level 1
+    else 
+	eza -T $argv
+    end
+end
 
