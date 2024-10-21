@@ -9,6 +9,8 @@ if status is-interactive
     alias restart_plasma 'killall plasmashell && kstart plasmashell'
     alias cl 'clear'
     alias gd 'goldendict'
+    alias mount_smb='sudo ~/myscripts/mount_smb.sh'
+    alias grep = rg
     atuin init fish | source
     zoxide init fish | source
 end
@@ -35,7 +37,6 @@ set -x GOPATH $HOME/.go
 fish_ssh_agent
 set -x VISUAL /usr/bin/nvim
 set -x EDITOR /usr/bin/nvim
-alias mount_smb='sudo ~/myscripts/mount_smb.sh'
 
 function virc
     set config_path $HOME/.config/fish/config.fish
