@@ -14,11 +14,17 @@ if status is-interactive
     atuin init fish | source
     zoxide init fish | source
 end
+
+fish_ssh_agent
+
 set -U fish_greeting
+
 set -x MANPAGER 'nvim +Man!'
 set -x MANWIDTH 999
 set -x VIRTUAL_ENV_DISABLE_PROMPT 1
-
+set -x GOPATH $HOME/.go
+set -x VISUAL /usr/bin/nvim
+set -x EDITOR /usr/bin/nvim
 set -x ELECTRON_OZONE_PLATFORM_HINT auto
 fish_add_path ~/.config/emacs/bin
 fish_add_path ~/.ghcup/bin
@@ -31,12 +37,8 @@ fish_add_path ~/.ghcup/bin
 
 #export MANWIDTH=999
 # https://code.visualstudio.com/docs/terminal/shell-integration
-string match -q "$TERM_PROGRAM" "vscode"
-and . (code --locate-shell-integration-path fish)
-set -x GOPATH $HOME/.go
-fish_ssh_agent
-set -x VISUAL /usr/bin/nvim
-set -x EDITOR /usr/bin/nvim
+#string match -q "$TERM_PROGRAM" "vscode"
+#and . (code --locate-shell-integration-path fish)
 
 function virc
     set config_path $HOME/.config/fish/config.fish
