@@ -1,4 +1,4 @@
 -o "/home/fan/Videos/ytb/%(title)s.%(ext)s"
 --write-thumbnail --convert-thumbnails png 
---write-sub --write-auto-subs --sub-lang en  --convert-subs=srt  --use-postprocessor srt_fix
+--write-subs --write-auto-subs --sub-lang en  --convert-subs=srt  --use-postprocessor srt_fix
 
