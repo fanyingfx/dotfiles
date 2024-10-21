@@ -56,7 +56,7 @@ function tree
     if test $argc -eq 0
 	eza -T --level 1
     else 
-	eza -T $argv
+	eza -T --level $argv
     end
 end
 
