@@ -35,7 +35,7 @@ set -x GOPATH $HOME/.go
 fish_ssh_agent
 set -x VISUAL /usr/bin/nvim
 set -x EDITOR /usr/bin/nvim
-alias mount_smb='sudo ~/scripts/mount_smb.sh'
+alias mount_smb='sudo ~/myscripts/mount_smb.sh'
 
 function virc
     set config_path $HOME/.config/fish/config.fish
