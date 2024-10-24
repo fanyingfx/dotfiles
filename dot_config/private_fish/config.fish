@@ -8,6 +8,7 @@ if status is-interactive
     alias open 'xdg-open'
     alias restart_plasma 'killall plasmashell && kstart plasmashell'
     alias cl 'clear'
+    alias clt '~/myscripts/clean_text.py'
     alias gd 'goldendict'
     alias mount_smb 'sudo ~/myscripts/mount_smb.sh'
     alias grep rg
