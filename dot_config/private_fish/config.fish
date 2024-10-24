@@ -38,8 +38,8 @@ fish_add_path $HOME/.local/bin
 
 #export MANWIDTH=999
 # https://code.visualstudio.com/docs/terminal/shell-integration
-#string match -q "$TERM_PROGRAM" "vscode"
-#and . (code --locate-shell-integration-path fish)
+string match -q "$TERM_PROGRAM" "vscode"
+and . (code --locate-shell-integration-path fish)
 
 function virc
     set config_path $HOME/.config/fish/config.fish
