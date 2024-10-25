@@ -22,6 +22,7 @@ set -U fish_greeting
 
 set -x MANPAGER 'nvim +Man!'
 set -x MANWIDTH 999
+
 set -x VIRTUAL_ENV_DISABLE_PROMPT 1
 set -x GOPATH $HOME/.go
 set -x VISUAL /usr/bin/nvim
