@@ -47,6 +47,9 @@ function virc
     chezmoi edit --apply $config_path
     source $config_path
 end
+function dlp-paste
+    yt-dlp (wl-paste) -f -
+end
 
 function yy
 	set tmp (mktemp -t "yazi-cwd.XXXXXX")
