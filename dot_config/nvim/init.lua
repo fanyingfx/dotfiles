@@ -860,6 +860,7 @@ require('lazy').setup({
     end,
   },
   { 'LhKipp/nvim-nu' },
+  { 'lambdalisue/vim-suda' },
   {
     'stevearc/oil.nvim',
     ---@module 'oil'
