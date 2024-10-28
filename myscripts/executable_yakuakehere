@@ -1,0 +1,38 @@
+#!/bin/bash
+
+dbus_cmd="qdbus6" # or qdbus or qdbus-qt5
+
+yakuake_settitle() {
+    "$dbus_cmd" org.kde.yakuake /yakuake/tabs setTabTitle "$sid" "$1"
+}
+
+yakuake_runcommand() {
+    "$dbus_cmd" org.kde.yakuake /yakuake/sessions runCommand "$1"
+}
+
+yakuake_toggleshow() {
+    "$dbus_cmd" org.kde.yakuake /yakuake/window toggleWindowState
+}
+
+if [ "$1" != "" ]; then
+    command="cd ""'"$1"'"
+else
+    PWD=`pwd`
+    command="cd ""'"$PWD"'
+    clear"
+fi
+
+title=$(basename $PWD)
+
+sid=$("$dbus_cmd" org.kde.yakuake /yakuake/sessions addSession)
+
+yakuake_runcommand "$command"
+
+yakuake_settitle $title
+
+# if running from terminal, skip.
+if [[ -t 0 ]]; then
+    echo "New tab created in yakuake."
+else
+   yakuake_toggleshow;
+fi
