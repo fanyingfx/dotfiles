@@ -12,7 +12,7 @@ if status is-interactive
     alias gd 'goldendict'
     alias mount_smb 'sudo ~/myscripts/mount_smb.sh'
     alias rg "rg --hidden --glob '!.git'"
-    alias grep rg
+    #alias grep rg
     atuin init fish | source
     zoxide init fish | source
 end
