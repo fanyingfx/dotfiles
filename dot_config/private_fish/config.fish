@@ -11,7 +11,7 @@ if status is-interactive
     alias clt '~/myscripts/clean_text.py'
     alias gd 'goldendict'
     alias mount_smb 'sudo ~/myscripts/mount_smb.sh'
-    alias rg rg --hidden --glob \'!.git\'
+    #alias rg rg --hidden --glob \'!.git\'
     alias grep rg
     atuin init fish | source
     zoxide init fish | source
