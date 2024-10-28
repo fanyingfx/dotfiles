@@ -36,6 +36,7 @@ set -x AM_HOME /home/fan/code/c/ics2024/abstract-machine
 
 fish_add_path ~/.config/emacs/bin
 fish_add_path ~/.ghcup/bin
+fish_add_path ~/myscripts/
 #fish_add_path $HOME/.local/bin
 
 #fish_default_key_bindings
