@@ -28,6 +28,11 @@ set -x GOPATH $HOME/.go
 set -x VISUAL /usr/bin/nvim
 set -x EDITOR /usr/bin/nvim
 set -x ELECTRON_OZONE_PLATFORM_HINT auto
+
+# set for nju pa
+set -x NEMU_HOME /home/fan/code/c/ics2024/nemu
+set -x AM_HOME /home/fan/code/c/ics2024/abstract-machine
+
 fish_add_path ~/.config/emacs/bin
 fish_add_path ~/.ghcup/bin
 #fish_add_path $HOME/.local/bin
