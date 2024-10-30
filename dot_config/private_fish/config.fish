@@ -71,8 +71,10 @@ function tree
     set argc (count $argv)
     if test $argc -eq 0
 	eza -T --level 1
+    else if test $argc -eq 1
+	eza -T  $argv[0] --level 1
     else 
-	eza -T --level $argv
+	eza -T  $argv[0] --level argv[1]
     end
 end
 
