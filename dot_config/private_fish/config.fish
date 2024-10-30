@@ -77,4 +77,7 @@ function tree
 	eza -T  $argv[1] --level $argv[2]
     end
 end
+function cdf
+    cd (eza -D -a | fzf)
+end
 
