@@ -72,9 +72,9 @@ function tree
     if test $argc -eq 0
 	eza -T --level 1
     else if test $argc -eq 1
-	eza -T  $argv[0] --level 1
+	eza -T  $argv[1] --level 1
     else 
-	eza -T  $argv[0] --level argv[1]
+	eza -T  $argv[1] --level argv[2]
     end
 end
 
