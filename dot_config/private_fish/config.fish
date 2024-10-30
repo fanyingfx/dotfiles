@@ -74,7 +74,7 @@ function tree
     else if test $argc -eq 1
 	eza -T  $argv[1] --level 1
     else 
-	eza -T  $argv[1] --level argv[2]
+	eza -T  $argv[1] --level $argv[2]
     end
 end
 
