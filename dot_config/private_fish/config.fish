@@ -13,6 +13,7 @@ if status is-interactive
     alias mount_smb 'sudo ~/myscripts/mount_smb.sh'
     alias rg 'rg -uu --glob \'!.git\''
     alias grep rg
+    alias codex 'code --ozone-platform=x11 --enable-ozone'
     atuin init fish | source
     zoxide init fish | source
 end
