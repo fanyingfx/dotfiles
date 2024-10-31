@@ -29,7 +29,7 @@ set -x VIRTUAL_ENV_DISABLE_PROMPT 1
 set -x GOPATH $HOME/.go
 set -x VISUAL /usr/bin/nvim
 set -x EDITOR /usr/bin/nvim
-#set -x ELECTRON_OZONE_PLATFORM_HINT auto
+set -x ELECTRON_OZONE_PLATFORM_HINT auto
 
 # set for nju pa
 set -x NEMU_HOME /home/fan/code/c/ics2024/nemu
