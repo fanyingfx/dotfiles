@@ -57,7 +57,7 @@ function virc
     source $config_path
 end
 function dlp-paste
-    yt-dlp (wl-paste) -f -
+    yt-dlp (wl-paste) $argv -f -
 end
 
 function yy
