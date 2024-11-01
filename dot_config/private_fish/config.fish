@@ -60,7 +60,7 @@ function dlp-paste
     yt-dlp (wl-paste) $argv -f -
 end
 function kt
-    kd -t "(wl-paste)"
+    kd -t (wl-paste)
 end
 
 function yy
