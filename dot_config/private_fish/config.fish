@@ -59,6 +59,9 @@ end
 function dlp-paste
     yt-dlp (wl-paste) $argv -f -
 end
+function kt
+    kd -t "(wl-paste)"
+end
 
 function yy
 	set tmp (mktemp -t "yazi-cwd.XXXXXX")
