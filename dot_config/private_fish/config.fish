@@ -59,6 +59,9 @@ end
 function dlp-paste
     yt-dlp (wl-paste) $argv -f -
 end
+function dlp-cwd
+    yt-dlp (wl-paste) -o "%(title)s.%(ext)s"
+end
 function kt
     kd -t (wl-paste)
 end
