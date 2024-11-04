@@ -65,6 +65,9 @@ end
 function kt
     kd -t (wl-paste)
 end
+function kw
+    kd (wl-paste)
+end
 
 function yy
 	set tmp (mktemp -t "yazi-cwd.XXXXXX")
