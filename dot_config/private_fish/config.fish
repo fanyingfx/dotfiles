@@ -30,7 +30,7 @@ set -x GOPATH $HOME/.go
 set -x VISUAL /usr/bin/nvim
 set -x EDITOR /usr/bin/nvim
 set -x ELECTRON_OZONE_PLATFORM_HINT auto
-set -x DLPFILE %(title)s.%(ext)s
+set -x DLPFILE "%(title)s.%(ext)s"
 
 # set for nju pa
 set -x NEMU_HOME /home/fan/code/c/ics2024/nemu
