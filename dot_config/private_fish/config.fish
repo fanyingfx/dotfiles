@@ -57,6 +57,9 @@ function virc
     chezmoi edit --apply $config_path
     source $config_path
 end
+function yt-down
+    yt_down.py (wl-paste)
+end
 function dlp-paste
     yt-dlp (wl-paste) $argv -f -
 end
