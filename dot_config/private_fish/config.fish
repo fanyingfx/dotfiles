@@ -6,7 +6,7 @@ if status is-interactive
     alias edit 'chezmoi edit --apply'
     alias chcd 'chezmoi cd'
     alias open 'xdg-open'
-    alias restart_plasma 'killall plasmashell && kstart plasmashell'
+    alias restart-plasma 'killall plasmashell && kstart plasmashell'
     alias cl 'clear'
     alias clt '~/myscripts/clean_text.py'
     alias gd 'goldendict'
@@ -40,12 +40,6 @@ fish_add_path ~/.config/emacs/bin
 fish_add_path ~/.ghcup/bin
 fish_add_path ~/myscripts/
 #fish_add_path $HOME/.local/bin
-
-#fish_default_key_bindings
-#fish_vi_key_bindings
-#bind -M insert \cp history-search-backward
-#bind -M insert \cn history-search-forward
-#bind -M insert \ce end-of-line
 
 #export MANWIDTH=999
 # https://code.visualstudio.com/docs/terminal/shell-integration
