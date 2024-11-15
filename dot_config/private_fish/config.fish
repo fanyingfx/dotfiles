@@ -1,7 +1,7 @@
 if status is-interactive
     # Commands to run in interactive sessions can go here
     starship init fish | source
-    alias ls  eza
+    alias ls  'eza -l'
     alias vim nvim
     alias edit 'chezmoi edit --apply'
     alias chcd 'chezmoi cd'
