@@ -24,6 +24,7 @@ set -U fish_greeting
 
 set -x MANPAGER 'nvim +Man!'
 set -x MANWIDTH 999
+set -x PAGER /usr/local/bin/moar
 
 set -x VIRTUAL_ENV_DISABLE_PROMPT 1
 set -x GOPATH $HOME/.go
