@@ -67,6 +67,9 @@ end
 function kw
     kd (wl-paste)
 end
+function play-text
+    edge-playback --text (wl-paste)
+end
 
 function yy
 	set tmp (mktemp -t "yazi-cwd.XXXXXX")
