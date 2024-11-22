@@ -93,3 +93,33 @@ function cdf
     cd (eza -D -a | fzf)
 end
 
+function run_c
+    if test (count $argv) -ne 1
+        echo "Usage: run_c <file.c>"
+        return 1
+    end
+
+    set file $argv[1]
+
+    # 检查文件是否存在
+    if not test -f $file
+        echo "Error: File '$file' not found."
+        return 1
+    end
+
+    # 提取文件名（去掉扩展名）
+    set base_name (basename $file .c)
+
+    # 编译
+    gcc $file -o $base_name
+    if test $status -ne 0
+        echo "Compilation failed."
+        return 1
+    end
+
+    # 运行
+    echo "Running $base_name..."
+    ./$base_name
+end
+
+
