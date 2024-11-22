@@ -118,7 +118,6 @@ function run_c
     end
 
     # 运行
-    echo "Running $base_name..."
     ./$base_name
 end
 
