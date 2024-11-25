@@ -14,6 +14,7 @@ if status is-interactive
     alias rg 'rg -uu --glob \'!.git\''
     alias grep rg
     alias codex 'code --ozone-platform=x11 --enable-ozone'
+    alias anki_export 'uv --directory /home/fan/code/python/sentence-flashcard run export.py'
     atuin init fish | source
     zoxide init fish | source
 end
