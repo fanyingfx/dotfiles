@@ -94,7 +94,7 @@ function cdf
     cd (eza -D -a | fzf)
 end
 
-function run_c
+function crun
     if test (count $argv) -ne 1
         echo "Usage: run_c <file.c>"
         return 1
@@ -119,7 +119,7 @@ function run_c
     end
 
     # 运行
-    ./$base_name
+    ./$base_name && mv $base_name /tmp
 end
 
 
