@@ -93,7 +93,7 @@ function cdf
     cd (eza -D -a | fzf)
 end
 function copypath
-    readlink -f $argv[1] | wl-copy
+    realpath $argv[1] | wl-copy
 end
 
 function crun
