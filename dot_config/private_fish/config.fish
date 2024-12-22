@@ -93,7 +93,7 @@ function cdf
     cd (eza -D -a | fzf)
 end
 function copypath
-    realpath $argv[1] | wl-copy
+    realpath $argv[1] | wl-copy -p
 end
 
 function crun
