@@ -92,6 +92,9 @@ end
 function cdf
     cd (eza -D -a | fzf)
 end
+function copypath
+    realpath $argv[1] | wl-copy
+end
 
 function crun
     if test (count $argv) -ne 1
