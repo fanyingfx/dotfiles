@@ -15,7 +15,8 @@ if status is-interactive
     alias grep rg
     alias codex 'code --ozone-platform=x11 --enable-ozone'
     alias anki_export 'uv --directory /home/fan/code/python/sentence-flashcard run export.py'
-    alias g++ 'g++ -Wall -Wextra'
+    alias g++w 'g++ -Wall -Wextra'
+    alias gccw 'gcc -Wall -Wextra'
     atuin init fish | source
     zoxide init fish | source
 end
