@@ -18,6 +18,7 @@ if status is-interactive
     alias g++w 'g++ -Wall -Wextra'
     alias clang++ 'clang++ -Wall -Wextra'
     alias clang 'clang -Wall -Wextra'
+    alias rm "echo Use 'del', or the full path i.e. '/bin/rm'"   
     alias gccw 'gcc -Wall -Wextra'
     atuin init fish | source
     zoxide init fish | source
