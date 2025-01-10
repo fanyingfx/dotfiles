@@ -39,7 +39,9 @@ set -x EDITOR /usr/bin/nvim
 set -x ELECTRON_OZONE_PLATFORM_HINT auto
 set -x DLPFILE "%(title)s.%(ext)s"
 set -x OCAMLRUNPARAM b
-set -x VCPKG_ROOT = /home/fan/code/cpp/vcpkg/
+set -x VCPKG_ROOT  /home/fan/code/cpp/vcpkg/
+set -x ZVM_INSTALL $HOME/.zvm/self
+
 
 # set for nju pa
 set -x NEMU_HOME /home/fan/code/c/ics2024/nemu
@@ -49,6 +51,8 @@ fish_add_path ~/.config/emacs/bin
 fish_add_path ~/.ghcup/bin
 fish_add_path ~/myscripts/
 fish_add_path $VCPKG_ROOT
+fish_add_path $ZVM_INSTALL
+fish_add_path $HOME/.zvm/bin
 #fish_add_path $HOME/.local/bin
 
 #export MANWIDTH=999
