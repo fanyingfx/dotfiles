@@ -20,7 +20,6 @@ if status is-interactive
     alias clang 'clang -Wall -Wextra'
     alias rm "echo Use 'del', or the full path i.e. '/bin/rm'"   
     alias gccw 'gcc -Wall -Wextra'
-    alias code 'code --enable-wayland-ime  2>/dev/null'
     atuin init fish | source
     zoxide init fish | source
 end
@@ -106,6 +105,11 @@ function cdf
 end
 function copypath
     realpath $argv[1] | wl-copy -p
+end
+function code
+
+    /usr/bin/code $argv[1] --enable-wayland-ime  2>/dev/null
+
 end
 
 function crun
