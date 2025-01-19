@@ -36,6 +36,7 @@ set -x VIRTUAL_ENV_DISABLE_PROMPT 1
 set -x GOPATH $HOME/.go
 set -x VISUAL /usr/bin/nvim
 set -x EDITOR /usr/bin/nvim
+set -x SYSTEMD_EDITOR /usr/bin/nvim
 set -x ELECTRON_OZONE_PLATFORM_HINT auto
 set -x DLPFILE "%(title)s.%(ext)s"
 set -x OCAMLRUNPARAM b
