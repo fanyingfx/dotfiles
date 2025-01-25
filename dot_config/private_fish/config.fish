@@ -20,6 +20,7 @@ if status is-interactive
     alias clang 'clang -Wall -Wextra'
     alias rm "echo Use 'del', or the full path i.e. '/bin/rm'"   
     alias gccw 'gcc -Wall -Wextra'
+    alias disasm 'objdump -drwC -Mintel'
     atuin init fish | source
     zoxide init fish | source
 end
