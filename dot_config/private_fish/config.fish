@@ -4,7 +4,6 @@ if status is-interactive
     alias ls  'eza -l'
     alias vim nvim
     alias edit 'chezmoi edit --apply'
-    alias chcd 'chezmoi cd && chezmoi add ~/.config/fish/config.fish'
     alias open 'xdg-open'
     alias restart-plasma 'killall plasmashell && kstart plasmashell'
     alias cl 'clear'
@@ -140,6 +139,11 @@ function crun
 
     # 运行
     ./$base_name && mv $base_name /tmp
+end
+
+function chcd
+    chezmoi cd
+    chezmoi add $HOME/.config/fish/config.fish
 end
 # BEGIN opam configuration
 # This is useful if you're using opam as it adds:
