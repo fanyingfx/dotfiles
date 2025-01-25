@@ -75,3 +75,6 @@ function yy() {
 
 
 
+source /usr/share/nvm/init-nvm.sh
+
+source /home/fan/.config/broot/launcher/bash/br

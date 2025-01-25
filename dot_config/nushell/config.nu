@@ -900,3 +900,5 @@ source ~/.zoxide.nu
 source ~/.local/share/atuin/init.nu
 
 
+
+use '/home/fan/.config/broot/launcher/nushell/br' *
