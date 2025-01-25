@@ -141,7 +141,7 @@ function crun
 end
 
 function chcd
-    chezmoi add '/home/fan/.config/fish/config.fish'
+    chezmoi re-add
     chezmoi cd
 end
 # BEGIN opam configuration
