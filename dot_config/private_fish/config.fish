@@ -62,7 +62,8 @@ fish_add_path $HOME/.zvm/bin
 
 function virc
     set config_path $HOME/.config/fish/config.fish
-    chezmoi edit --apply $config_path
+    #chezmoi edit --apply $config_path
+    vim $config_path
     source $config_path
 end
 function yt-down
