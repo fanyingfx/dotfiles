@@ -53,7 +53,7 @@ fish_add_path ~/myscripts/
 fish_add_path $VCPKG_ROOT
 fish_add_path $ZVM_INSTALL
 fish_add_path $HOME/.zvm/bin
-#fish_add_path $HOME/.local/bin
+fish_add_path $HOME/bin
 
 #export MANWIDTH=999
 # https://code.visualstudio.com/docs/terminal/shell-integration
@@ -139,6 +139,10 @@ function crun
     # 运行
     ./$base_name && mv $base_name /tmp
 end
+function viconf
+    /usr/bin/nvim $HOME/myscripts/predefined/conf.fish
+    source $HOME/myscripts/predefined/conf.fish
+end
 
 function chcd
     chezmoi re-add
@@ -151,5 +155,5 @@ end
 # This section can be safely removed at any time if needed.
 test -r '/home/fan/.opam/opam-init/init.fish' && source '/home/fan/.opam/opam-init/init.fish' > /dev/null 2> /dev/null; or true
 # END opam configuration
-
+source $HOME/myscripts/predefined/conf.fish
 
