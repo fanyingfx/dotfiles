@@ -19,6 +19,7 @@ if status is-interactive
     alias rm "echo Use 'del', or the full path i.e. '/bin/rm'"   
     alias gccw 'gcc -Wall -Wextra'
     alias disasm 'objdump -drwC -Mintel'
+    alias gcp 'git clone (wl-paste)'
     atuin init fish | source
     zoxide init fish | source
 end
@@ -30,6 +31,7 @@ set -U fish_greeting
 set -x MANPAGER 'nvim +Man!'
 set -x MANWIDTH 999
 #set -x PAGER /usr/local/bin/moar
+set local_proxy 'http://127.0.0.1:7890'
 
 set -x VIRTUAL_ENV_DISABLE_PROMPT 1
 set -x GOPATH $HOME/.go
@@ -38,9 +40,14 @@ set -x EDITOR /usr/bin/nvim
 set -x SYSTEMD_EDITOR /usr/bin/nvim
 set -x ELECTRON_OZONE_PLATFORM_HINT auto
 set -x DLPFILE "%(title)s.%(ext)s"
+set -x DLPFOLDER $HOME/Videos/ytb
 set -x OCAMLRUNPARAM b
 set -x VCPKG_ROOT  /home/fan/code/cpp/vcpkg/
 set -x ZVM_INSTALL $HOME/.zvm/self
+set -x https_proxy $local_proxy
+set -x http_proxy $local_proxy 
+set -x all_proxy $local_proxy
+
 
 
 # set for nju pa
@@ -54,6 +61,8 @@ fish_add_path $VCPKG_ROOT
 fish_add_path $ZVM_INSTALL
 fish_add_path $HOME/.zvm/bin
 fish_add_path $HOME/bin
+fish_add_path $HOME/.moon/bin
+fish_add_path $HOME/.local/bin 
 
 #export MANWIDTH=999
 # https://code.visualstudio.com/docs/terminal/shell-integration
@@ -89,7 +98,7 @@ function yy
 	if set cwd (command cat -- "$tmp"); and [ -n "$cwd" ]; and [ "$cwd" != "$PWD" ]
 		builtin cd -- "$cwd"
 	end
-	rm -f -- "$tmp"
+	/bin/rm -f -- "$tmp"
 end
 function tree
     set argc (count $argv)
@@ -107,10 +116,6 @@ end
 function copypath
     realpath $argv[1] | wl-copy -p
 end
-function code
-    /usr/bin/code $argv[1] --enable-wayland-ime  2>/dev/null
-
-end
 
 function crun
     if test (count $argv) -ne 1
@@ -120,24 +125,7 @@ function crun
 
     set file $argv[1]
 
-    # 检查文件是否存在
-    if not test -f $file
-        echo "Error: File '$file' not found."
-        return 1
-    end
-
-    # 提取文件名（去掉扩展名）
-    set base_name (basename $file .c)
-
-    # 编译
-    gcc $file -o $base_name
-    if test $status -ne 0
-        echo "Compilation failed."
-        return 1
-    end
-
-    # 运行
-    ./$base_name && mv $base_name /tmp
+    gcc -o /tmp/a.out $file && /tmp/a.out
 end
 function viconf
     /usr/bin/nvim $HOME/myscripts/predefined/conf.fish
@@ -157,3 +145,11 @@ test -r '/home/fan/.opam/opam-init/init.fish' && source '/home/fan/.opam/opam-in
 # END opam configuration
 source $HOME/myscripts/predefined/conf.fish
 
+
+
+# pnpm
+#set -gx PNPM_HOME "/home/fan/.local/share/pnpm"
+#if not string match -q -- $PNPM_HOME $PATH
+#  set -gx PATH "$PNPM_HOME" $PATH
+#end
+# pnpm end
