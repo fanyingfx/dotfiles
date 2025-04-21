@@ -8,3 +8,6 @@ patch:
     Shift_L: commit_code
   "switcher/hotkeys":
     - F4
+  app_options:
+    ".*":
+      use_clipboard: false

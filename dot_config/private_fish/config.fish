@@ -20,8 +20,12 @@ if status is-interactive
     alias gccw 'gcc -Wall -Wextra'
     alias disasm 'objdump -drwC -Mintel'
     alias gcp 'git clone (wl-paste)'
+    alias hx helix
     atuin init fish | source
     zoxide init fish | source
+
+    bind \cf forward-word
+    bind \cb backward-word
 end
 
 fish_ssh_agent
@@ -136,20 +140,28 @@ function chcd
     chezmoi re-add
     chezmoi cd
 end
-# BEGIN opam configuration
-# This is useful if you're using opam as it adds:
-#   - the correct directories to the PATH
-#   - auto-completion for the opam binary
-# This section can be safely removed at any time if needed.
+
+function git
+    if test "$argv[1]" = "push" && test "$argv[2]" = "-f"
+        echo '⚠️ trying to force push... [git push -f]'
+        read -l -P 'continue? [y/N]: ' confirm
+        if test "$confirm" != "y"
+            echo "❌ canceled force push"
+            return 1
+        end
+    end
+    command git $argv
+end
+
+function codep
+    set profile $argv[1]
+    set rest $argv[2..-1]
+    command code --profile $profile $rest
+end
+set -l profiles "zig moonbit haskell ocaml rust python odin c" 
+complete -c codep -n "not __fish_seen_subcommand_from $profiles" -f -a "$profiles" 
+
 test -r '/home/fan/.opam/opam-init/init.fish' && source '/home/fan/.opam/opam-init/init.fish' > /dev/null 2> /dev/null; or true
 # END opam configuration
 source $HOME/myscripts/predefined/conf.fish
 
-
-
-# pnpm
-#set -gx PNPM_HOME "/home/fan/.local/share/pnpm"
-#if not string match -q -- $PNPM_HOME $PATH
-#  set -gx PATH "$PNPM_HOME" $PATH
-#end
-# pnpm end

@@ -10,9 +10,10 @@
   process-unmapped-keys yes
 )
 
+
 (defsrc
-  caps grv         i
-              j    k    l
+  caps grv         k
+              h    j    l
   lsft rsft
 )
 
@@ -30,5 +31,5 @@
 
 (defalias
   cap (tap-hold-press 200 200 C-, lctl)
-  grv (tap-hold-press 200 200 grv (layer-toggle arrows))
+  grv (tap-hold-press 150 200 grv (layer-toggle arrows))
 )
