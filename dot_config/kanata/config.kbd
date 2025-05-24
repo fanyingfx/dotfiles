@@ -30,6 +30,6 @@
 )
 
 (defalias
-  cap (tap-hold-press 200 200 C-, lctl)
+  cap (tap-hold-press 200 200 esc lctl)
   grv (tap-hold-press 150 200 grv (layer-toggle arrows))
 )
