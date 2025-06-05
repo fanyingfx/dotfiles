@@ -25,6 +25,7 @@ if status is-interactive
 
     bind \cf forward-word
     bind \cb backward-word
+    bind \cz 'fg 2> /dev/null'
 end
 
 fish_ssh_agent
@@ -149,12 +150,24 @@ function git
     end
     command git $argv
 end
+function shortcuts
+    cat ~/code/config/shortcuts.txt
+end
 
 function codep
     set profile $argv[1]
     set rest $argv[2..-1]
     command code --profile $profile $rest
 end
+function rec-mpv
+    eza --absolute --sort=created --reverse /home/fan/Videos/recordings/ | head -n 1 | xargs mpv
+end
+function whisperx
+
+    uvx -p 3.12 whisperx --model small --compute_type int8 --output srt $argv[1]
+
+end
+
 set -l profiles "zig moonbit haskell ocaml rust python odin c"
 complete -c codep -n "not __fish_seen_subcommand_from $profiles" -f -a "$profiles"
 

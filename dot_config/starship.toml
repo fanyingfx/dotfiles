@@ -4,11 +4,6 @@ $directory\
 [](fg:#769ff0 bg:#394260)\
 $git_branch\
 $git_status\
-[](fg:#394260 bg:#212736)\
-$python\
-[](fg:#212736 bg:#1d2230)\
-$time\
-[ ](fg:#1d2230)\
 $status\
 \n$character"""
 
@@ -30,13 +25,13 @@ format = '[[ $symbol $branch ](fg:#769ff0 bg:#394260)]($style)'
 style = "bg:#394260"
 format = '[[($all_status$ahead_behind )](fg:#769ff0 bg:#394260)]($style)'
 
-[python]
-symbol = " "
-style = "bg:#212736"
-# format='[${symbol}${pyenv_prefix}(${version} )(\($virtualenv\) )]($style)'
-format = "[ ${symbol} $virtualenv ${version}]($style) "
-python_binary=['python','python3']
-pyenv_version_name = false
+# [python]
+# symbol = " "
+# style = "bg:#212736"
+# # format='[${symbol}${pyenv_prefix}(${version} )(\($virtualenv\) )]($style)'
+# format = "[ ${symbol} $virtualenv ${version}]($style) "
+# python_binary=['python','python3']
+# pyenv_version_name = false
 
 
 [time]
