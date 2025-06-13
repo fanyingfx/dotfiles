@@ -2,26 +2,28 @@ if status is-interactive
     starship init fish | source
     alias ls 'eza -l'
     alias vim nvim
-    alias edit 'chezmoi edit --apply'
+    # alias edit 'chezmoi edit --apply'
     alias open xdg-open
     alias restart-plasma 'killall plasmashell && kstart plasmashell'
     alias cl clear
     alias clt '~/myscripts/clean_text.py'
     alias gd goldendict
     alias mount_smb 'sudo ~/myscripts/mount_smb.sh'
-    alias rg 'rg -uu --glob \'!.git\''
+    # alias rg 'rg -uu --glob \'!.git\''
     alias grep rg
     alias codex 'code --ozone-platform=x11 --enable-ozone'
     alias anki_export 'uv --directory /home/fan/code/python/sentence-flashcard run export.py'
     alias g++w 'g++ -Wall -Wextra'
     alias clang++ 'clang++ -Wall -Wextra'
     alias clang 'clang -Wall -Wextra'
+    alias del /bin/rm
     alias rm "echo Use 'del', or the full path i.e. '/bin/rm'"
     alias gccw 'gcc -Wall -Wextra'
     alias disasm 'objdump -drwC -Mintel'
     alias gcp 'git clone (wl-paste)'
-    atuin init fish | source
+    atuin init fish --disable-up-arrow | source
     zoxide init fish | source
+    jj util completion fish | source
 
     bind \cf forward-word
     bind \cb backward-word
@@ -68,6 +70,9 @@ fish_add_path $HOME/.local/bin
 
 #export MANWIDTH=999
 # https://code.visualstudio.com/docs/terminal/shell-integration
+#
+
+alias edit $EDITOR
 
 function virc
     set config_path $HOME/.config/fish/config.fish
@@ -157,6 +162,21 @@ end
 function codep
     set profile $argv[1]
     set rest $argv[2..-1]
+    switch $profile
+        case zig
+            set profile ⚡zig
+        case moonbit
+            set profile 🐰moonbit
+        case ocaml
+            set profile 🐪Ocaml
+        case rust
+            set profile 🦀rust
+        case go
+            set profle 🐹go
+        case '*'
+            echo "Wrong profile"
+            return 1
+    end
     command code --profile $profile $rest
 end
 function rec-mpv
@@ -164,7 +184,7 @@ function rec-mpv
 end
 function whisperx
 
-    uvx -p 3.12 whisperx --model small --compute_type int8 --output srt $argv[1]
+    uvx -p 3.12 whisperx --model small --compute_type int8 --output_format srt --chunk_size 15 $argv[1]
 
 end
 
