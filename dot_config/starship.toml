@@ -4,6 +4,7 @@ $directory\
 [](fg:#769ff0 bg:#394260)\
 $git_branch\
 $git_status\
+${custom.jj}\
 $status\
 \n$character"""
 
@@ -32,6 +33,11 @@ format = '[[($all_status$ahead_behind )](fg:#769ff0 bg:#394260)]($style)'
 # format = "[ ${symbol} $virtualenv ${version}]($style) "
 # python_binary=['python','python3']
 # pyenv_version_name = false
+[custom.jj]
+command='''starship-jj --ignore-working-copy starship prompt'''
+format = "[$symbol](blue bold) $output "
+symbol = "󱗆 "
+when = "jj root --ignore-working-copy"
 
 
 [time]

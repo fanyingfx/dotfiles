@@ -9,6 +9,7 @@ if status is-interactive
     alias clt '~/myscripts/clean_text.py'
     alias gd goldendict
     alias mount_smb 'sudo ~/myscripts/mount_smb.sh'
+    alias prx proxychains
     # alias rg 'rg -uu --glob \'!.git\''
     alias grep rg
     alias codex 'code --ozone-platform=x11 --enable-ozone'
@@ -50,9 +51,7 @@ set -x DLPFOLDER $HOME/Videos/ytb
 set -x OCAMLRUNPARAM b
 set -x VCPKG_ROOT /home/fan/code/cpp/vcpkg/
 set -x ZVM_INSTALL $HOME/.zvm/self
-set -x https_proxy $local_proxy
-set -x http_proxy $local_proxy
-set -x all_proxy $local_proxy
+#set -x all_proxy $local_proxy
 
 # set for nju pa
 set -x NEMU_HOME /home/fan/code/c/ics2024/nemu
@@ -81,6 +80,7 @@ function virc
     source $config_path
 end
 function yt-down
+    set -lx all_proxy $local_proxy
     yt_down.py (wl-paste)
 end
 function dlp-paste
@@ -186,6 +186,28 @@ function whisperx
 
     uvx -p 3.12 whisperx --model small --compute_type int8 --output_format srt --chunk_size 15 $argv[1]
 
+end
+function fish_remove_path
+    if set -l index (contains -i "$argv" $fish_user_paths)Add commentMore actions
+        set -e fish_user_paths[$index]
+        echo "Removed $argv from the path"
+    end
+end
+function toggle_proxy
+    if set -q all_proxy
+        set -e all_proxy
+        set -e https_proxy
+        set -e http_proxy
+        echo "Proxy disabled"
+
+    else
+
+        set -gx all_proxy $local_proxy
+        set -gx https_proxy $local_proxy
+        set -gx http_proxy $local_proxy
+        echo "Proxy enabled: all_proxy"
+
+    end
 end
 
 set -l profiles "zig moonbit haskell ocaml rust python odin c"
