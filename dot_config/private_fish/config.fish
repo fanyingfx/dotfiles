@@ -1,5 +1,8 @@
 if status is-interactive
     starship init fish | source
+    atuin init fish --disable-up-arrow | source
+    zoxide init fish | source
+    jj util completion fish | source
     alias ls 'eza -l'
     alias vim nvim
     # alias edit 'chezmoi edit --apply'
@@ -22,9 +25,7 @@ if status is-interactive
     alias gccw 'gcc -Wall -Wextra'
     alias disasm 'objdump -drwC -Mintel'
     alias gcp 'git clone (wl-paste)'
-    atuin init fish --disable-up-arrow | source
-    zoxide init fish | source
-    jj util completion fish | source
+    alias rm_lock 'sudo rm /var/lib/pacman/db.lck'
 
     bind \cf forward-word
     bind \cb backward-word
@@ -51,7 +52,7 @@ set -x DLPFOLDER $HOME/Videos/ytb
 set -x OCAMLRUNPARAM b
 set -x VCPKG_ROOT /home/fan/code/cpp/vcpkg/
 set -x ZVM_INSTALL $HOME/.zvm/self
-#set -x all_proxy $local_proxy
+set -x all_proxy $local_proxy
 
 # set for nju pa
 set -x NEMU_HOME /home/fan/code/c/ics2024/nemu
@@ -61,8 +62,8 @@ fish_add_path ~/.config/emacs/bin
 fish_add_path ~/.ghcup/bin
 fish_add_path ~/myscripts/
 fish_add_path $VCPKG_ROOT
-fish_add_path $ZVM_INSTALL
-fish_add_path $HOME/.zvm/bin
+#fish_add_path $ZVM_INSTALL
+#fish_add_path $HOME/.zvm/bin
 fish_add_path $HOME/bin
 fish_add_path $HOME/.moon/bin
 fish_add_path $HOME/.local/bin
@@ -188,7 +189,7 @@ function whisperx
 
 end
 function fish_remove_path
-    if set -l index (contains -i "$argv" $fish_user_paths)Add commentMore actions
+    if set -l index (contains -i "$argv" $fish_user_paths)
         set -e fish_user_paths[$index]
         echo "Removed $argv from the path"
     end
