@@ -7,4 +7,4 @@ background-opacity = 0.9
 window-theme = ghostty
 gtk-titlebar = false
 shell-integration = fish
-quick-terminal-size = 100%,100%
+quick-terminal-size=100%,100%

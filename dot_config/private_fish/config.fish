@@ -11,11 +11,11 @@ if status is-interactive
     alias cl clear
     alias clt '~/myscripts/clean_text.py'
     alias gd goldendict
-    alias mount_smb 'sudo ~/myscripts/mount_smb.sh'
+    # alias mount_smb 'sudo ~/myscripts/mount_smb.sh'
     alias prx proxychains
     # alias rg 'rg -uu --glob \'!.git\''
     alias grep rg
-    alias codex 'code --ozone-platform=x11 --enable-ozone'
+    # alias codex 'code --ozone-platform=x11 --enable-ozone'
     alias anki_export 'uv --directory /home/fan/code/python/sentence-flashcard run export.py'
     alias g++w 'g++ -Wall -Wextra'
     alias clang++ 'clang++ -Wall -Wextra'
@@ -24,11 +24,14 @@ if status is-interactive
     alias rm "echo Use 'del', or the full path i.e. '/bin/rm'"
     alias gccw 'gcc -Wall -Wextra'
     alias disasm 'objdump -drwC -Mintel'
-    alias gcp 'git clone (wl-paste)'
-    alias rm_lock 'sudo rm /var/lib/pacman/db.lck'
+    abbr gcp 'git clone (wl-paste)'
+    abbr rm_lock 'sudo rm /var/lib/pacman/db.lck'
+    alias zig_watch 'zig build -p -Dno-lib --watch -fincremental --prominent-compile-errors'
+    alias rreset='echo -e "\033[0m"'
 
     bind \cf forward-word
     bind \cb backward-word
+    bind \cw backward-kill-word
     bind \cz 'fg 2> /dev/null'
 end
 
@@ -62,8 +65,8 @@ fish_add_path ~/.config/emacs/bin
 fish_add_path ~/.ghcup/bin
 fish_add_path ~/myscripts/
 fish_add_path $VCPKG_ROOT
-#fish_add_path $ZVM_INSTALL
-#fish_add_path $HOME/.zvm/bin
+fish_add_path $ZVM_INSTALL
+fish_add_path $HOME/.zvm/bin
 fish_add_path $HOME/bin
 fish_add_path $HOME/.moon/bin
 fish_add_path $HOME/.local/bin
@@ -182,6 +185,10 @@ function codep
 end
 function rec-mpv
     eza --absolute --sort=created --reverse /home/fan/Videos/recordings/ | head -n 1 | xargs mpv
+end
+
+function ytb-mpv
+    eza -I "*.png|*.srt" --absolute --sort=created --reverse /home/fan/Videos/ytb/ | head -n 1 | xargs mpv
 end
 function whisperx
 
