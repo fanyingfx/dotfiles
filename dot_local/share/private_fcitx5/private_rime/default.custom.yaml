@@ -1,5 +1,5 @@
 patch:
-  "menu/page_size": 8
+  "menu/page_size": 6
   schema_list:
     - schema: double_pinyin_mspy 
   ascii_composer/good_old_caps_lock: true

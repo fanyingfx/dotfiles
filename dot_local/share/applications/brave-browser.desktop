@@ -109,6 +109,7 @@ StartupNotify=true
 StartupWMClass=brave-browser
 #TryExec=brave 
 Exec=brave --enable-wayland-ime --disable-features=GlobalShortcutsPortal %U
+#Exec=brave --ozone-platform=x11 --disable-features=GlobalShortcutsPortal %U
 Terminal=false
 Icon=brave-desktop
 Type=Application
@@ -220,5 +221,6 @@ Name[uk]=Нове вікно в режимі анонімного перегля
 Name[vi]=Cửa sổ ẩn danh mới
 Name[zh_CN]=新建隐身窗口
 Name[zh_TW]=新增無痕式視窗
-Exec=brave --incognito --enable-wayland-ime --disable-features=GlobalShortcutsPortal
+#Exec=brave --incognito --enable-wayland-ime --disable-features=GlobalShortcutsPortal
+Exec=brave --incognito  --disable-features=GlobalShortcutsPortal
 MimeType=x-scheme-handler/unknown;x-scheme-handler/about;text/html;text/xml;application/xhtml_xml;image/webp;x-scheme-handler/http;x-scheme-handler/https;

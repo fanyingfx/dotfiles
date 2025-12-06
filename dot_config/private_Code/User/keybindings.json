@@ -821,7 +821,9 @@
     },
     {
         "key": "ctrl+, s",
-        "command": "workbench.action.openSettingsJson"
+        "command": "workbench.action.openSettingsJson",
+        "args": { "openToSide": true }
+
     },
     {
         "key": "ctrl+, p",
@@ -1084,7 +1086,7 @@
     }, {
         "key": "backspace",
         "command": "deleteLeft",
-        "when": "textInputFocus && (!editorTextFocus || editorTextFocus && dance.mode == 'insert') "
+        "when": "textInputFocus && !editorTextFocus || editorTextFocus && textInputFocus"
     },
 
     {
@@ -1220,4 +1222,33 @@
                     } } ] },
         "when": "editorTextFocus && dance.mode == 'normal' && editorLangId =='typst'"
     },
+    {
+        "key": "shift+s",
+        "command": "-dance.selections.split",
+        "when": "editorTextFocus && dance.mode == 'normal'"
+    },
+    {
+        "key": "shift+s",
+        "command": "-dance.selections.split",
+        "when": "editorTextFocus && dance.mode == 'select'"
+    },
+    {
+        "key": "shift+s",
+        "command": "dance.match.surround",
+        "when": "editorTextFocus && dance.mode == 'normal'"
+    },
+    {
+        "key": "shift+s",
+        "command": "dance.match.surround",
+        "when": "editorTextFocus && dance.mode == 'select'"
+    },
+    {
+        "key": "ctrl+shift+alt+p",
+        "command": "presentation-mode.toggle"
+    },
+    {
+        "key": "ctrl+alt+p",
+        "command": "-presentation-mode.toggle"
+    },
+
 ]

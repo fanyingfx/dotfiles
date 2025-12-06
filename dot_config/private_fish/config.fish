@@ -3,8 +3,9 @@ if status is-interactive
     atuin init fish --disable-up-arrow | source
     zoxide init fish | source
     jj util completion fish | source
-    alias ls 'eza -l'
+    alias ls eza
     alias vim nvim
+    alias sudoedit 'doas helix'
     # alias edit 'chezmoi edit --apply'
     alias open xdg-open
     alias restart-plasma 'killall plasmashell && kstart plasmashell'
@@ -43,6 +44,7 @@ set -x MANPAGER 'nvim +Man!'
 set -x MANWIDTH 999
 #set -x PAGER /usr/local/bin/moar
 set local_proxy 'http://127.0.0.1:7890'
+set -x ADVENT_OF_CODE_TOKEN 53616c7465645f5facd4be46001ace2e931b6d143a02876257f044a9f2048d820a45a1266f33f14613e46f9267bae520c811734e5787989139a3d6d662c27948
 
 set -x VIRTUAL_ENV_DISABLE_PROMPT 1
 set -x GOPATH $HOME/.go
@@ -67,9 +69,11 @@ fish_add_path ~/myscripts/
 fish_add_path $VCPKG_ROOT
 fish_add_path $ZVM_INSTALL
 fish_add_path $HOME/.zvm/bin
-fish_add_path $HOME/bin
 fish_add_path $HOME/.moon/bin
 fish_add_path $HOME/.local/bin
+fish_add_path $HOME/bin
+fish_add_path $HOME/.dotnet
+fish_add_path $HOME/.dotnet/tools
 
 #export MANWIDTH=999
 # https://code.visualstudio.com/docs/terminal/shell-integration
@@ -84,7 +88,7 @@ function virc
     source $config_path
 end
 function yt-down
-    set -lx all_proxy $local_proxy
+    #set -lx all_proxy $local_proxy
     yt_down.py (wl-paste)
 end
 function dlp-paste
@@ -163,26 +167,6 @@ function shortcuts
     cat ~/code/config/shortcuts.txt
 end
 
-function codep
-    set profile $argv[1]
-    set rest $argv[2..-1]
-    switch $profile
-        case zig
-            set profile ⚡zig
-        case moonbit
-            set profile 🐰moonbit
-        case ocaml
-            set profile 🐪Ocaml
-        case rust
-            set profile 🦀rust
-        case go
-            set profle 🐹go
-        case '*'
-            echo "Wrong profile"
-            return 1
-    end
-    command code --profile $profile $rest
-end
 function rec-mpv
     eza --absolute --sort=created --reverse /home/fan/Videos/recordings/ | head -n 1 | xargs mpv
 end
@@ -217,7 +201,29 @@ function toggle_proxy
 
     end
 end
+function video_info
+    ffprobe -v error -select_streams v:0 \
+        -show_entries stream=width,height \
+        -of csv=s=x:p=0 $argv[1]
+end
 
+function codep
+    set profile $argv[1]
+    set rest $argv[2..-1]
+    switch $profile
+        case zig
+            set profile ⚡zig
+        case moonbit
+            set profile 🐰moonbit
+        case ocaml
+            set profile 🐪Ocaml
+        case rust
+            set profile 🦀rust
+        case go
+            set profile 🐹go
+    end
+    code --profile $profile $rest
+end
 set -l profiles "zig moonbit haskell ocaml rust python odin c"
 complete -c codep -n "not __fish_seen_subcommand_from $profiles" -f -a "$profiles"
 
