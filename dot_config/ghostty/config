@@ -1,10 +1,11 @@
 quick-terminal-position="center"
 quick-terminal-autohide=false
 keybind=global:alt+q=toggle_quick_terminal
-keybind=alt+f=toggle_fullscreen
 initial-window=false
 background-opacity = 0.9
 window-theme = ghostty
+font-family = "
+font-family = "UbuntuMono Nerd Font"
 gtk-titlebar = false
 shell-integration = fish
 quick-terminal-size=100%,100%

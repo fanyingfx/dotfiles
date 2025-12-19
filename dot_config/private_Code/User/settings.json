@@ -626,6 +626,8 @@
   "chat.disableAIFeatures": true,
   "breadcrumbs.enabled": false,
   "editor.stickyScroll.enabled": false,
+  "editor.dragAndDrop": false,
+  "go.toolsManagement.autoUpdate": true,
   //  "editor.wordSeparators": "",
 
 }
