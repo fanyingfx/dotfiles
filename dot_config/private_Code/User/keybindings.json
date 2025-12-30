@@ -1196,32 +1196,32 @@
         "when": "editorTextFocus && dance.mode == 'normal' && editorLangId =='typst'"
     },
 
-    {
-        "key": "shift+o",
+    // {
+    //     "key": "shift+o",
 
-        "command": "runCommands",
-        "args": { "commands": [ "dance.edit.newLine.above.insert", { "command": "command-runner.run", "args": { "command": "fcitx5-remote -o",
+    //     "command": "runCommands",
+    //     "args": { "commands": [ "dance.edit.newLine.above.insert", { "command": "command-runner.run", "args": { "command": "fcitx5-remote -o",
 
-                    } } ] },
-        "when": "editorTextFocus && dance.mode == 'normal' && editorLangId =='typst'"
-    },
+    //                 } } ] },
+    //     "when": "editorTextFocus && dance.mode == 'normal' && editorLangId =='typst'"
+    // },
 
-    {
-        "key": "shift+a",
-        "command": "runCommands",
-        "args": { "commands": [ "dance.modes.insert.lineEnd", { "command": "command-runner.run", "args": { "command": "fcitx5-remote -o",
+    // {
+    //     "key": "shift+a",
+    //     "command": "runCommands",
+    //     "args": { "commands": [ "dance.modes.insert.lineEnd", { "command": "command-runner.run", "args": { "command": "fcitx5-remote -o",
 
-                    } } ] },
-        "when": "editorTextFocus && dance.mode == 'normal' && editorLangId =='typst'"
-    },
-    {
-        "key": "shift+I",
-        "command": "runCommands",
-        "args": { "commands": [ "dance.modes.insert.lineStart", { "command": "command-runner.run", "args": { "command": "fcitx5-remote -o",
+    //                 } } ] },
+    //     "when": "editorTextFocus && dance.mode == 'normal' && editorLangId =='typst'"
+    // },
+    // {
+    //     "key": "shift+I",
+    //     "command": "runCommands",
+    //     "args": { "commands": [ "dance.modes.insert.lineStart", { "command": "command-runner.run", "args": { "command": "fcitx5-remote -o",
 
-                    } } ] },
-        "when": "editorTextFocus && dance.mode == 'normal' && editorLangId =='typst'"
-    },
+    //                 } } ] },
+    //     "when": "editorTextFocus && dance.mode == 'normal' && editorLangId =='typst'"
+    // },
     {
         "key": "shift+s",
         "command": "-dance.selections.split",
