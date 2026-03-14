@@ -1,17 +1,14 @@
 // Place your key bindings in this file to override the defaultsauto[]
 [
-
     {
         "key": "ctrl+n",
         "command": "cursorDown",
-        "when": "textInputFocus && dance.mode == 'insert' && !inDebugRepl"
-
+        "when": "textInputFocus && (dance.mode == 'insert' || editorLangId == 'typst' || editorLangId == 'lean4') && !inDebugRepl"
     },
-
     {
         "key": "ctrl+p",
         "command": "cursorUp",
-        "when": "textInputFocus && dance.mode == 'insert' && !inDebugRepl"
+        "when": "textInputFocus &&  (dance.mode == 'insert' || editorLangId == 'typst' || editorLangId == 'lean4') && !inDebugRepl"
     },
     {
         "key": "/",
@@ -71,8 +68,12 @@
     },
     {
         "key": "ctrl+a",
+        "command": "editor.action.selectAll"
+    },
+    {
+        "key": "ctrl+a",
         "command": "cursorHome",
-        "when": "editorFocus &&  !sideBarFocus",
+        "when": "editorTextFocus && editorFocus &&  !sideBarFocus",
     },
     {
         "key": "shift+alt+enter",
@@ -124,33 +125,26 @@
         "command": "-extension.vim_ctrl+j",
         "when": "editorTextFocus && vim.active && vim.use<C-j> && !inDebugRepl"
     },
-
     {
         "key": "ctrl+, /",
         "command": "actions.find",
         "when": "editorFocus || editorIsOpen"
     },
     {
-
         "key": "ctrl+, h",
         "command": "editor.action.startFindReplaceAction",
         "when": "editorFocus || editorIsOpen"
-
     },
-
     {
         "key": "ctrl+f",
         "command": "cursorRight",
-        "when": "textInputFocus && dance.mode == 'insert'"
+        "when": "textInputFocus"
     },
     {
-
         "key": "ctrl+b",
         "command": "cursorLeft",
-        "when": "textInputFocus && dance.mode == 'insert'"
-
+        "when": "textInputFocus"
     },
-
     {
         "key": "shift+alt+f8",
         "command": "editor.action.marker.prevInFiles",
@@ -192,10 +186,6 @@
         "when": "terminal.active"
     },
     {
-        "key": "ctrl+`",
-        "command": "workbench.action.togglePanel"
-    },
-    {
         "key": "ctrl+j",
         "command": "-workbench.action.togglePanel"
     },
@@ -204,7 +194,6 @@
         "command": "-workbench.action.terminal.toggleTerminal",
         "when": "terminal.active"
     },
-
     {
         "key": "ctrl+p",
         "command": "-workbench.action.quickOpen"
@@ -276,11 +265,6 @@
         "command": "magic-racket.runFile",
         "when": "dance.mode=='normal' && editorLangId=='racket'"
     },
-    {
-        "key": "ctrl+, .", "command": "editor.action.revealDefinition",
-        "when": "editorTextFocus",
-    },
-
     {
         "key": "ctrl+o",
         "command": "workbench.action.navigateBack",
@@ -769,10 +753,6 @@
         "when": "textInputFocus && !editorReadonly"
     },
     {
-        "key": "ctrl+a",
-        "command": "-editor.action.selectAll"
-    },
-    {
         "key": "ctrl+k a",
         "command": "editor.action.selectAll"
     },
@@ -784,10 +764,8 @@
         "key": "ctrl+,",
         "command": "-workbench.action.openSettings"
     },
-
-
     {
-        "key": "ctrl+, shift+.",
+        "key": "ctrl+, .",
         "command": "editor.action.revealDefinitionAside",
         "when": "editorHasDefinitionProvider && !isInEmbeddedEditor"
     },
@@ -822,8 +800,9 @@
     {
         "key": "ctrl+, s",
         "command": "workbench.action.openSettingsJson",
-        "args": { "openToSide": true }
-
+        "args": {
+            "openToSide": true
+        }
     },
     {
         "key": "ctrl+, p",
@@ -892,7 +871,6 @@
     {
         "key": "alt+p",
         "command": "my-code.prev"
-
     },
     {
         "key": "ctrl+, l",
@@ -922,30 +900,25 @@
         "command": "editor.action.joinLines",
         "when": "editorTextFocus"
     },
-    { "key": "Shift+right",
+    {
+        "key": "Shift+right",
         "command": "cursorRightSelect",
         "when": "editorTextFocus"
-
     },
     {
         "key": "Shift+left",
         "command": "cursorLeftSelect",
         "when": "editorTextFocus"
-
     },
     {
         "key": "Ctrl+Shift+w",
         "command": "deleteWordPartLeft",
         "when": "editorTextFocus"
-
-
     },
     {
         "key": "ctrl+w",
         "command": "deleteWordLeft",
-        "when": "editorTextFocus && dance.mode == 'insert'"
-
-
+        "when": "editorTextFocus && (dance.mode == 'insert' || editorLangId =='typst')"
     },
     {
         "key": "ctrl+k ctrl+k",
@@ -985,11 +958,6 @@
         "command": "dance.select.line.above.extend",
         "when": "editorTextFocus && dance.mode == 'normal'"
     },
-    // {
-    //     "key": ", shift+.",
-    //     "command": "editor.action.revealDefinitionAside",
-    //     "when": "editorHasDefinitionProvider && !isInEmbeddedEditor && dance.mode == 'normal'"
-    // },
     {
         "key": "b",
         "command": "-dance.seek.word.extend.backward",
@@ -998,7 +966,12 @@
     {
         "key": "b",
         "command": "runCommands",
-        "args": { "commands": [ "dance.select.left.extend", "dance.seek.word.extend.backward" ] },
+        "args": {
+            "commands": [
+                "dance.select.left.extend",
+                "dance.seek.word.extend.backward"
+            ]
+        },
         "when": "editorTextFocus && dance.mode == 'select'"
     },
     {
@@ -1024,7 +997,12 @@
         "key": "ctrl+;",
         // "command": "-findJump.activate"
         "command": "runCommands",
-        "args": { "commands": [ "dance.modes.set.temporarily.insert", "findJump.activate" ] }
+        "args": {
+            "commands": [
+                "dance.modes.set.temporarily.insert",
+                "findJump.activate"
+            ]
+        }
     },
     {
         "key": "ctrl+c",
@@ -1046,23 +1024,22 @@
         "command": "-dance.selections.saveText",
         "when": "editorTextFocus && dance.mode == 'select'"
     },
-
-
     {
         "key": "y",
         "command": "runCommands",
-        "args": { "commands": [
+        "args": {
+            "commands": [
                 "dance.dev.setSelectionBehavior",
                 "highlightOnCopy.run",
                 "dance.dev.setSelectionBehavior",
-            ] },
+            ]
+        },
         "when": "editorTextFocus && (dance.mode == 'normal' || dance.mode =='select')"
     },
     {
         "key": "\\ p",
         "command": "typst-preview.browser-slide",
         "when": "editorTextFocus && dance.mode == 'normal'"
-
     },
     {
         "key": "tab",
@@ -1083,12 +1060,12 @@
         "key": "backspace",
         "command": "-deleteLeft",
         // "when": "textInputFocus && (!editorTextFocus || editorTextFocus && dance.mode == 'insert') "
-    }, {
+    },
+    {
         "key": "backspace",
         "command": "deleteLeft",
         "when": "textInputFocus && !editorTextFocus || editorTextFocus && textInputFocus"
     },
-
     {
         "key": "ctrl+alt+k",
         "command": "bookmarks.jumpToPrevious",
@@ -1154,74 +1131,13 @@
         "key": "ctrl+k i",
         "command": "-inlineChat.startWithCurrentLine",
         "when": "inlineChatHasProvider && !editorReadonly && !inlineChatVisible"
-
     },
     {
         "key": "\\ r",
         "command": "rust-analyzer.run",
         "when": "editorTextFocus && dance.mode == 'normal'"
     },
-    {
-        "key": "escape",
-        "command": "runCommands",
-        "args": { "commands": [ "dance.modes.set.normal", { "command": "command-runner.run", "args": { "command": "fcitx5-remote -c",
-                    } } ] },
-        "when": "editorTextFocus && dance.mode == 'insert' && editorLangId =='typst'"
-    },
-    {
-        "key": "i",
-        "command": "runCommands",
-        "args": { "commands": [ "dance.modes.insert.before", { "command": "command-runner.run", "args": { "command": "fcitx5-remote -o",
 
-                    } } ] },
-        "when": "editorTextFocus && dance.mode == 'normal' && editorLangId =='typst'"
-    },
-
-    {
-        "key": "a",
-        "command": "runCommands",
-        "args": { "commands": [ "dance.modes.insert.after", { "command": "command-runner.run", "args": { "command": "fcitx5-remote -o",
-
-                    } } ] },
-        "when": "editorTextFocus && dance.mode == 'normal' && editorLangId =='typst'"
-
-    },
-    {
-        "key": "o",
-
-        "command": "runCommands",
-        "args": { "commands": [ "dance.edit.newLine.below.insert", { "command": "command-runner.run", "args": { "command": "fcitx5-remote -o",
-
-                    } } ] },
-        "when": "editorTextFocus && dance.mode == 'normal' && editorLangId =='typst'"
-    },
-
-    // {
-    //     "key": "shift+o",
-
-    //     "command": "runCommands",
-    //     "args": { "commands": [ "dance.edit.newLine.above.insert", { "command": "command-runner.run", "args": { "command": "fcitx5-remote -o",
-
-    //                 } } ] },
-    //     "when": "editorTextFocus && dance.mode == 'normal' && editorLangId =='typst'"
-    // },
-
-    // {
-    //     "key": "shift+a",
-    //     "command": "runCommands",
-    //     "args": { "commands": [ "dance.modes.insert.lineEnd", { "command": "command-runner.run", "args": { "command": "fcitx5-remote -o",
-
-    //                 } } ] },
-    //     "when": "editorTextFocus && dance.mode == 'normal' && editorLangId =='typst'"
-    // },
-    // {
-    //     "key": "shift+I",
-    //     "command": "runCommands",
-    //     "args": { "commands": [ "dance.modes.insert.lineStart", { "command": "command-runner.run", "args": { "command": "fcitx5-remote -o",
-
-    //                 } } ] },
-    //     "when": "editorTextFocus && dance.mode == 'normal' && editorLangId =='typst'"
-    // },
     {
         "key": "shift+s",
         "command": "-dance.selections.split",
@@ -1250,5 +1166,42 @@
         "key": "ctrl+alt+p",
         "command": "-presentation-mode.toggle"
     },
-
+    {
+        "key": "ctrl+enter",
+        "command": "fsi.SendSelection",
+        "when": "editorFocus && !findWidgetVisible && editorLangId == 'fsharp'"
+    },
+    {
+        "key": "alt+enter",
+        "command": "-fsi.SendSelection",
+        "when": "editorFocus && !findWidgetVisible && editorLangId == 'fsharp'"
+    },
+    {
+        "key": "ctrl+u",
+        "command": "-dance.select.vertically",
+        "when": "editorTextFocus && dance.mode == 'select'"
+    },
+    {
+        "key": "ctrl+u",
+        "command": "-dance.select.vertically",
+        "when": "editorTextFocus && dance.mode == 'normal'"
+    },
+    {
+        "key": "ctrl+u",
+        "command": "-dance.select.vertically",
+        "when": "editorTextFocus && dance.mode == 'insert'"
+    },
+    {
+        "key": "ctrl+u",
+        "command": "cursorUndo"
+    },
+    {
+        "key": "ctrl+`",
+        "command": "workbench.action.terminal.focus"
+    },
+    {
+        "key": "ctrl+`",
+        "command": "workbench.action.focusActiveEditorGroup",
+        "when": "terminalFocus"
+    }
 ]

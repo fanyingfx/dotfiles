@@ -3,7 +3,7 @@ if status is-interactive
     atuin init fish --disable-up-arrow | source
     zoxide init fish | source
     jj util completion fish | source
-    alias ls eza
+    alias ls 'eza -snew'
     alias vim nvim
     alias sudoedit 'doas helix'
     # alias edit 'chezmoi edit --apply'
@@ -57,7 +57,7 @@ set -x DLPFOLDER $HOME/Videos/ytb
 set -x OCAMLRUNPARAM b
 set -x VCPKG_ROOT /home/fan/code/cpp/vcpkg/
 set -x ZVM_INSTALL $HOME/.zvm/self
-set -x all_proxy $local_proxy
+#set -x all_proxy $local_proxy
 
 # set for nju pa
 set -x NEMU_HOME /home/fan/code/c/ics2024/nemu

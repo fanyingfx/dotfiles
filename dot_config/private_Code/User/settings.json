@@ -185,6 +185,16 @@
   },
   // SECTION theme config
   "editor.semanticTokenColorCustomizations": {
+    "[fan-ellie]": {
+      "enabled": true,
+      "rules": {
+        "enumMember": "#0085c2"
+        //     "class": "#0085c2",
+        //     "type": "#0085c2",
+        //     "struct": "#01a9d2"
+
+      }
+    },
 
     "[Tokyo Night Storm]": {
       "enabled": true,
@@ -198,7 +208,7 @@
     "[Minimal Kiwi]": {
       "enabled": true,
       "rules": {
-        "operator.controlFlow": "#ff6600",
+        // "operator.controlFlow": "#ff6600",
         "macroBang": "#ff8800",
         "macro": "#f2aa58",
         "enumMember": "#ffb300",
@@ -216,6 +226,20 @@
     },
   },
   "editor.tokenColorCustomizations": {
+    "[fan-ellie]": {
+      "strings": "#d38901",
+      "textMateRules": [
+        {
+          "scope": [ "markup.fenced_code" ],
+          "settings": {
+            // "foreground": "#FF0000",
+            "fontStyle": ""
+          }
+
+        }
+      ]
+
+    },
     "[Minimal Kiwi]": {
       "variables": "#D1D1D1",
       "textMateRules": [
@@ -248,10 +272,10 @@
         },
 
         {
-          "scope": "keyword.control.flow",
+          "scope": [ "keyword.control.flow", "keyword.control.trycatch.zig" ],
           "settings": {
-            "foreground": "#ff9900",
-            "fontStyle": ""
+            // "foreground": "#ff9900",
+            "fontStyle": "bold"
           }
         },
         { "scope": "markup.bold",
@@ -274,8 +298,15 @@
           }
         },
         {
+          "scope": "storage.modifier",
+          "settings": {
+            "foreground": "#ffa200",
+            // "fontStyle": "bold"
+          }
+        },
+        {
           "name": "comments",
-          "scope": [ "comment punctuation.definition.comment" ],
+          "scope": [ "comment", "comment punctuation.definition.comment" ],
           "settings": {
             "foreground": "#5ED464B8",
             // "fontStyle": "bold"
@@ -356,7 +387,6 @@
   "editor.codeLensFontSize": 15,
   "makefile.configureOnOpen": true,
   "git.autofetch": true,
-  "clangd.path": "/home/fan/.config/Code/User/globalStorage/llvm-vs-code-extensions.vscode-clangd/install/19.1.2/clangd_19.1.2/bin/clangd",
   "github.copilot.renameSuggestions.triggerAutomatically": false,
   "workbench.startupEditor": "none",
   "settingsSync.ignoredSettings": [
@@ -460,9 +490,6 @@
 
   "editor.parameterHints.enabled": false,
   "editor.parameterHints.cycle": false,
-  "clangd.arguments": [
-    // "--function-arg-placeholders=0",
-  ],
   // "terminal.integrated.suggest.quickSuggestions": ,
   "editor.suggest.localityBonus": true,
   "C_Cpp.default.cppStandard": "c++20",
@@ -505,12 +532,12 @@
       "cursorStyle": "block",
       // "selectionBehavior": "caret",
       "inheritFrom": null
-      // "decorations": 
+      // "decorations":
     },
 
   },
   "lean4.alwaysAskBeforeInstallingLeanVersions": false,
-  "workbench.preferredLightColorTheme": "Default Dark Modern",
+  "workbench.preferredLightColorTheme": "Gruvbox Light Hard",
   "presentation-mode.active": {
 
     "commands": [
@@ -531,12 +558,9 @@
   "debug.console.acceptSuggestionOnEnter": "on",
   "extensions.verifySignature": false,
   "jjk.enableAnnotations": false,
-  "window.commandCenter": false,
-  // "window.title": "${dirty}${activeEditorShort}${separator}${rootName}${separator}${separator}",
-  "window.customTitleBarVisibility": "windowed",
   // "editor.wordSeparators": "`~!@#$%^&*-=+()[{[}\\|;:'\",.<>/?",
   // "lldb.consoleMode": "evaluate",
-  // "debug.internalConsoleOptions": 
+  // "debug.internalConsoleOptions":
   // "workbench.editor.editorActionsLocation": "hidden",
   // "workbench.settings.useSplitJSON": true,
 
@@ -565,7 +589,9 @@
   },
   "magicRacket.trace.server": "messages",
   "editor.wordSeparators": "`~!@#$%^&*-=+[{]}()\\|;:'\",.<>/?",
-  "window.title": "${dirty}${activeEditorShort}${separator}${separator}${separator",
+  "window.title": "${rootName}${separator}${activeEditorShort}${separator}",
+
+  // "window.title": "${dirty}${activeEditorShort}${separator}${separator}${separator",
   "chat.mcp.discovery.enabled": {
     "claude-desktop": false,
     "windsurf": false,
@@ -606,7 +632,6 @@
   "workbench.view.showQuietly": {
     "workbench.panel.output": false
   },
-  "window.menuBarVisibility": "compact",
   "httpyac.codelens": {
     "clearHistory": true
   },
@@ -615,19 +640,44 @@
   "Codegeex.Comment.LanguagePreference": "English",
   "Codegeex.CommitMessage.LanguagePreference": "English",
   "Codegeex.SidebarUI.LanguagePreference": "中文",
-  "Codegeex.GenerationPreference": "automatic",
+  "Codegeex.GenerationPreference": "line by line",
   "[vue]": {
     "editor.defaultFormatter": "Vue.volar"
   },
   "editor.formatOnSave": true,
   "Codegeex.Privacy": false,
   "oil-code.enableAlternateConfirmation": true,
-  "workbench.preferredDarkColorTheme": "Minimal Kiwi",
   "chat.disableAIFeatures": true,
   "breadcrumbs.enabled": false,
   "editor.stickyScroll.enabled": false,
   "editor.dragAndDrop": false,
   "go.toolsManagement.autoUpdate": true,
+  "terminal.integrated.suggest.enabled": false,
+  "python.analysis.typeCheckingMode": "standard",
+  "files.associations": {
+    "*.c": "c",
+    "*.h": "c"
+  },
+  "csharp.inlayHints.enableInlayHintsForTypes": true,
+  "csharp.inlayHints.enableInlayHintsForImplicitObjectCreation": true,
+  "csharp.inlayHints.enableInlayHintsForImplicitVariableTypes": true,
+  "csharp.inlayHints.enableInlayHintsForLambdaParameterTypes": true,
+  "dotnet.inlayHints.enableInlayHintsForLiteralParameters": true,
+  "dotnet.inlayHints.enableInlayHintsForIndexerParameters": true,
+  "dotnet.inlayHints.enableInlayHintsForObjectCreationParameters": true,
+  "dotnet.inlayHints.enableInlayHintsForOtherParameters": true,
+  "dotnet.inlayHints.enableInlayHintsForParameters": true,
+  "chat.extensionUnification.enabled": false,
+  "terminal.integrated.gpuAcceleration": "off",
+  "window.customTitleBarVisibility": "windowed",
+  "workbench.preferredDarkColorTheme": "fan-ellie",
+  "markdown.preview.fontSize": 18,
+  "[typescriptreact]": {
+    "editor.defaultFormatter": "vscode.typescript-language-features"
+  },
+  "window.menuBarVisibility": "compact",
+  "workbench.layoutControl.enabled": false,
+  "window.commandCenter": false,
   //  "editor.wordSeparators": "",
 
 }
