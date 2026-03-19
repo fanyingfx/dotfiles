@@ -44,9 +44,8 @@ set -x MANPAGER 'nvim +Man!'
 set -x MANWIDTH 999
 #set -x PAGER /usr/local/bin/moar
 set local_proxy 'http://127.0.0.1:7890'
-set -x ADVENT_OF_CODE_TOKEN 53616c7465645f5facd4be46001ace2e931b6d143a02876257f044a9f2048d820a45a1266f33f14613e46f9267bae520c811734e5787989139a3d6d662c27948
 
-set -x VIRTUAL_ENV_DISABLE_PROMPT 1
+#set -x VIRTUAL_ENV_DISABLE_PROMPT 1
 set -x GOPATH $HOME/.go
 set -x VISUAL /usr/bin/helix
 set -x EDITOR /usr/bin/helix
