@@ -144,19 +144,20 @@
   // "editor.fontLigatures": "'calt','ss03','ss05','ss06','ss07'",
 
   // "editor.fontFamily": "'Berkeley Mono'",
-  "editor.fontFamily": "'Monaspace Argon'",
+  // "editor.fontFamily": "'Cascadia Code','Monaspace Argon'",
   // "editor.fontFamily": "'Berkeley Mono SemiBoldOblique'",
   // "editor.fontFamily": "'Berkeley Mono'",
   // ,'IBM Plex Mono Medm'",
   // "editor.fontFamily": "'Atkinson Hyperlegible Mono'",
   // "editor.fontFamily": "'CommitMono'",
+  // "editor.fontFamily": "'IBM Plex Mono Medm'",
+  // "editor.fontFamily": "'0xProto'",
   // "editor.fontFamily": "'IBM Plex Mono'",
-  // "editor.fontFamily": "'IBM Plex Mono'",
-  // "editor.fontFamily": "'Monaspace Argon Medium'",
+  "editor.fontFamily": "'Monaspace Argon'",
 
   "editor.fontLigatures": true,
   "editor.fontSize": 18,
-  "editor.fontWeight": "450",
+  "editor.fontWeight": "400",
   // "editor.fontFamily": "'Monaspace Argon Medium'",
   // "editor.fontLigatures": "'calt', 'liga', 'ss01', 'ss02', 'ss03', 'ss04', 'ss05', 'ss06', 'ss07', 'ss08', 'ss09'",
   // "editor.fontSize": 16,
@@ -188,7 +189,7 @@
     "[fan-ellie]": {
       "enabled": true,
       "rules": {
-        "enumMember": "#0085c2"
+        "enumMember": "#c26400"
         //     "class": "#0085c2",
         //     "type": "#0085c2",
         //     "struct": "#01a9d2"
@@ -536,7 +537,6 @@
 
   },
   "lean4.alwaysAskBeforeInstallingLeanVersions": false,
-  "workbench.preferredLightColorTheme": "Gruvbox Light Hard",
   "presentation-mode.active": {
 
     "commands": [
@@ -588,7 +588,7 @@
   },
   "magicRacket.trace.server": "messages",
   "editor.wordSeparators": "`~!@#$%^&*-=+[{]}()\\|;:'\",.<>/?",
-  "window.title": "${rootName}${separator}${activeEditorShort}${separator}",
+  "window.title": "${rootName}${separator}${activeEditorShort}",
 
   // "window.title": "${dirty}${activeEditorShort}${separator}${separator}${separator",
   "chat.mcp.discovery.enabled": {
@@ -643,7 +643,6 @@
   "[vue]": {
     "editor.defaultFormatter": "Vue.volar"
   },
-  "editor.formatOnSave": true,
   "Codegeex.Privacy": false,
   "oil-code.enableAlternateConfirmation": true,
   "chat.disableAIFeatures": true,
@@ -655,7 +654,9 @@
   "python.analysis.typeCheckingMode": "standard",
   "files.associations": {
     "*.c": "c",
-    "*.h": "c"
+    "*.h": "c",
+    "*.{a80,z80,asm,inc,s}": "asm-collection",
+    "*.{list,lis}": "asm-collection-list"
   },
   "csharp.inlayHints.enableInlayHintsForTypes": true,
   "csharp.inlayHints.enableInlayHintsForImplicitObjectCreation": true,
@@ -668,8 +669,6 @@
   "dotnet.inlayHints.enableInlayHintsForParameters": true,
   "chat.extensionUnification.enabled": false,
   "terminal.integrated.gpuAcceleration": "off",
-  "window.customTitleBarVisibility": "windowed",
-  "workbench.preferredDarkColorTheme": "fan-ellie",
   "markdown.preview.fontSize": 18,
   "[typescriptreact]": {
     "editor.defaultFormatter": "vscode.typescript-language-features"
@@ -681,6 +680,12 @@
   "python.terminal.activateEnvironment": false,
   "terminal.integrated.stickyScroll.enabled": false,
   "terminal.integrated.shellIntegration.quickFixEnabled": false,
+  "errorLens.onSaveTimeout": 800,
+  "errorLens.delay": 500,
+  "task.verboseLogging": true,
+  "workbench.preferredDarkColorTheme": "fan-ellie",
+  "workbench.preferredLightColorTheme": "fan-ellie",
+  "window.customTitleBarVisibility": "windowed",
   //  "editor.wordSeparators": "",
 
 }

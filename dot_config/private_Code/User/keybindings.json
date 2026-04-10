@@ -3,12 +3,12 @@
     {
         "key": "ctrl+n",
         "command": "cursorDown",
-        "when": "textInputFocus && (dance.mode == 'insert' || editorLangId == 'typst' || editorLangId == 'lean4') && !inDebugRepl"
+        "when": "textInputFocus  && !inDebugRepl"
     },
     {
         "key": "ctrl+p",
         "command": "cursorUp",
-        "when": "textInputFocus &&  (dance.mode == 'insert' || editorLangId == 'typst' || editorLangId == 'lean4') && !inDebugRepl"
+        "when": "textInputFocus  && !inDebugRepl"
     },
     {
         "key": "/",
@@ -918,7 +918,7 @@
     {
         "key": "ctrl+w",
         "command": "deleteWordLeft",
-        "when": "editorTextFocus && (dance.mode == 'insert' || editorLangId =='typst')"
+        "when": "editorTextFocus"
     },
     {
         "key": "ctrl+k ctrl+k",
@@ -1203,5 +1203,19 @@
         "key": "ctrl+`",
         "command": "workbench.action.focusActiveEditorGroup",
         "when": "terminalFocus"
+    },
+    {
+        "key": "alt+g",
+        "command": "workbench.action.terminal.goToRecentDirectory",
+        "when": "terminalFocus && terminalHasBeenCreated || terminalFocus && terminalProcessSupported"
+    },
+    {
+        "key": "ctrl+g",
+        "command": "-workbench.action.terminal.goToRecentDirectory",
+        "when": "terminalFocus && terminalHasBeenCreated || terminalFocus && terminalProcessSupported"
+    },
+    {
+        "key": "ctrl+, n",
+        "command": "fileutils.newFile"
     }
 ]
