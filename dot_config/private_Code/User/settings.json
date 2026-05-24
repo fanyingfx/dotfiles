@@ -100,12 +100,15 @@
   },
 
   "zig.zls.enabled": "on",
+  "zig.buildOnSaveArgs": [ "-fincremental" ],
+  "zig.buildOnSaveProvider": "auto",
   "[zig]": {
     "editor.formatOnSave": false,
     "files.eol": "\n",
     "editor.suggestSelection": "recentlyUsed",
     // "editor.wordSeparators": "`~!@#$%^&*-=+()[{[}\\|;:',.<>/?",
     "editor.suggest.insertMode": "insert",
+
     "editor.codeActionsOnSave": {
       // Run code actions that currently supports adding and removing discards.
       "source.fixAll": "explicit",
@@ -186,6 +189,13 @@
   },
   // SECTION theme config
   "editor.semanticTokenColorCustomizations": {
+    "[Light 2026]": {
+      "enabled": true,
+      "rules": {
+        "comment": "#36ad48"
+      }
+
+    },
     "[fan-ellie]": {
       "enabled": true,
       "rules": {
@@ -240,6 +250,19 @@
         }
       ]
 
+    },
+    "[Light 2026]": {
+      "comments": "#36ad48",
+      "textMateRules": [
+        {
+          "name": "comments",
+          "scope": [ "comment", "comment punctuation.definition.comment" ],
+          "settings": {
+            "foreground": "#36ad48",
+            // "fontStyle": "bold"
+          }
+        }
+      ]
     },
     "[Minimal Kiwi]": {
       "variables": "#D1D1D1",
@@ -320,7 +343,7 @@
   },
   "editor.semanticHighlighting.enabled": true,
   "editor.wordWrap": "wordWrapColumn",
-  "editor.wordWrapColumn": 100,
+  "editor.wordWrapColumn": 150,
   "explorer.confirmDelete": false,
   "explorer.copyRelativePathSeparator": "/",
   "files.autoSave": "onFocusChange",
@@ -362,7 +385,6 @@
   // !SECTION
   "vscodeGoogleTranslate.HoverTranslations": false,
   "window.autoDetectColorScheme": true,
-  "workbench.editor.enablePreview": false,
   "workbench.editor.highlightModifiedTabs": true,
   "workbench.editor.limit.enabled": true,
   "workbench.editor.limit.excludeDirty": true,
@@ -530,7 +552,7 @@
   "dance.modes": {
     "normal": {
       "cursorStyle": "block",
-      // "selectionBehavior": "caret",
+      "selectionBehavior": "character",
       "inheritFrom": null
       // "decorations":
     },
@@ -574,7 +596,13 @@
   "workbench.editor.splitInGroupLayout": "vertical",
   "search.mode": "reuseEditor",
   "workbench.colorCustomizations": {
-    "searchEditor.findMatchBackground": "#ffff00aa"
+    
+    "searchEditor.findMatchBackground": "#ffff00aa",
+    "titleBar.activeBackground": "#f4efef",      // 激活窗口标题栏背景白色
+    "titleBar.activeForeground": "#1C1C1C",      // 激活窗口标题栏文字偏黑
+    "titleBar.inactiveBackground": "#F0F0F0",    // 非激活窗口标题栏稍浅的灰色
+    "titleBar.inactiveForeground": "#2C2C2C"     // 非激活窗口标题栏文字偏黑
+
 
   },
   "remote.defaultExtensionsIfInstalledLocally": [
@@ -614,7 +642,6 @@
   },
   "security.promptForLocalFileProtocolHandling": false,
   "redhat.telemetry.enabled": true,
-  "zig.path": "zig",
   "chat.mcp.access": "none",
   "workbench.editorAssociations": {
     "*.md": "vscode.markdown.preview.editor"
@@ -645,7 +672,6 @@
   },
   "Codegeex.Privacy": false,
   "oil-code.enableAlternateConfirmation": true,
-  "chat.disableAIFeatures": true,
   "breadcrumbs.enabled": false,
   "editor.stickyScroll.enabled": false,
   "editor.dragAndDrop": false,
@@ -683,9 +709,50 @@
   "errorLens.onSaveTimeout": 800,
   "errorLens.delay": 500,
   "task.verboseLogging": true,
-  "workbench.preferredDarkColorTheme": "fan-ellie",
+  "workbench.preferredDarkColorTheme": "Light 2026",
   "workbench.preferredLightColorTheme": "fan-ellie",
   "window.customTitleBarVisibility": "windowed",
+  "moonbit.ai.models": [
+
+    {
+      "name": "Claude Sonnect 4",
+      "baseUrl": "https://6c5368d2-e27b-4326-b849-e4bf8ad41f4f.moonbitlang.com",
+      "apiKey": "",
+      "model": "us.anthropic.claude-sonnet-4-20250514-v1:0"
+    },
+    {
+      "name": "GPT-4o",
+      "baseUrl": "https://6c5368d2-e27b-4326-b849-e4bf8ad41f4f.moonbitlang.com",
+      "apiKey": "",
+      "model": "gpt-4o-2024-08-06"
+    }
+  ],
+  "zig.zls.path": "/home/fan/.zvm/bin/zls",
+  "js/ts.inlayHints.functionLikeReturnTypes.enabled": true,
+  "js/ts.inlayHints.enumMemberValues.enabled": true,
+  "js/ts.inlayHints.variableTypes.enabled": true,
+  "[snippets]": {
+
+    "editor.quickSuggestions": {
+      "strings": true
+    },
+    "editor.suggest.insertMode": "replace"
+  },
+  "terminal.integrated.commandsToSkipShell": [
+    "workbench.actions.view.problems"
+  ],
+  "chat.tips.enabled": false,
+  "chat.disableAIFeatures": true,
+  "editor.defaultFormatter": "charliermarsh.ruff",
+  "[rust]": {
+    "editor.defaultFormatter": "rust-lang.rust-analyzer"
+  },
+  "zig.path": "zig",
+  "[moonbit]": {
+    "editor.defaultFormatter": "moonbit.moonbit-lang"
+  },
+  "errorLens.enabled": false,
+
   //  "editor.wordSeparators": "",
 
 }

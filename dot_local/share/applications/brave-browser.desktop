@@ -108,7 +108,7 @@ Comment[zh_TW]=連線到網際網路
 StartupNotify=true
 StartupWMClass=brave-browser
 #TryExec=brave 
-Exec=brave --enable-wayland-ime --disable-features=GlobalShortcutsPortal %U
+Exec=brave --enable-wayland-ime --password-store=kdewallet6 --disable-features=GlobalShortcutsPortal %U
 #Exec=brave --ozone-platform=x11 --disable-features=GlobalShortcutsPortal %U
 Terminal=false
 Icon=brave-desktop

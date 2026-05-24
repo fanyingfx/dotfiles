@@ -383,11 +383,6 @@
         "when": "editorTextFocus && editorLangId == 'vsnetrw' && vim.mode =~ /^(?!SearchInProgressMode|CommandlineInProgress).*$/"
     },
     {
-        "key": "o",
-        "command": "extension.vim_escape",
-        "when": "editorTextFocus && editorLangId == 'vsnetrw'"
-    },
-    {
         "key": "escape",
         "command": "-vsnetrw.close",
         "when": "editorTextFocus && editorLangId == 'vsnetrw' && vim.mode =~ /^(?!SearchInProgressMode|CommandlineInProgress).*$/"
@@ -1217,5 +1212,31 @@
     {
         "key": "ctrl+, n",
         "command": "fileutils.newFile"
+    },
+    {
+        "key": "ctrl+shift+m",
+        "command": "workbench.actions.view.problems"
+    },
+    {
+        "key": "ctrl+shift+m",
+        "command": "-workbench.actions.view.problems",
+        "when": "workbench.panel.markers.view.active"
+    },
+    {
+        "key": "ctrl+k .",
+        "command": "my-code.peek-definition-aside"
+    },
+    {
+        "key": "enter",
+        "command": "-extension.helixKeymap.exitSearchMode",
+        "when": "editorTextFocus && extension.helixKeymap.searchMode || editorTextFocus && extension.helixKeymap.selectMode"
+    },
+    {
+        "key": "ctrl+k f",
+        "command": "fast-fuzzy-finder.open"
+    },
+    {
+        "key": "ctrl+shift+f",
+        "command": "-fast-fuzzy-finder.open"
     }
 ]
