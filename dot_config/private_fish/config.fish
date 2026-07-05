@@ -64,6 +64,7 @@ if status is-interactive
     alias rm "echo Use 'del', or the full path i.e. '/bin/rm'"
     abbr rm_lock 'sudo rm /var/lib/pacman/db.lck'
     abbr zig_watch 'zig build -p -Dno-lib --watch -fincremental --prominent-compile-errors'
+    abbr rheo_watch 'rheo watch . --html --open'
     alias pirun='pi --model zai/glm-4.7 -p'
     alias edit $EDITOR
 
@@ -147,25 +148,14 @@ if status is-interactive
     function clip_to_string_array
         python ~/bin/split_to_array.py (wl-paste)
     end
-
-    function codep
-        set profile $argv[1]
-        set rest $argv[2..-1]
-        switch $profile
-            case zig
-                set profile ⚡zig
-            case moonbit
-                set profile 🐰moonbit
-            case ocaml
-                set profile 🐪Ocaml
-            case rust
-                set profile 🦀rust
-            case go
-                set profile 🐹go
-        end
-        code --profile $profile $rest 2>/dev/null
+    function _compile_c_abbr
+        set src $argv[1]
+        set out (string replace -r '\.c$' '' -- $src)
+        echo "cc $src -o $out"
     end
+    abbr -a compile --regex '.+\.c$' --position command --function _compile_c_abbr
 
-    set -l profiles "zig moonbit haskell ocaml rust python odin c"
-    complete -c codep -n "not __fish_seen_subcommand_from $profiles" -f -a "$profiles"
+    function check_books
+        ~/code/python/book_search/check_books.sh
+    end
 end
