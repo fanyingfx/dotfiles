@@ -75,8 +75,11 @@ if status is-interactive
     bind --erase --all \ec
     fzf --fish | source
     atuin init fish --disable-up-arrow | source
-
     function virc
+        echo "use 'hxrc'"
+    end
+
+    function hxrc
         set config_path $HOME/.config/fish/config.fish
         #chezmoi edit --apply $config_path
         helix $config_path
