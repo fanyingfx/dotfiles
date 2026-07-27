@@ -263,7 +263,7 @@
     {
         "key": "\\ r",
         "command": "magic-racket.runFile",
-        "when": "dance.mode=='normal' && editorLangId=='racket'"
+        "when": "dance.mode=='helix/normal' && editorLangId=='racket'"
     },
     {
         "key": "ctrl+o",
@@ -927,7 +927,7 @@
     {
         "key": "ctrl+d",
         "command": "-dance.select.vertically",
-        "when": "editorTextFocus && dance.mode == 'normal'"
+        "when": "editorTextFocus && dance.mode == 'helix/normal'"
     },
     {
         "key": "ctrl+d",
@@ -946,12 +946,12 @@
     {
         "key": "shift+x",
         "command": "dance.select.line.above.extend",
-        "when": "editorTextFocus && dance.mode == 'select'"
+        "when": "editorTextFocus && dance.mode == 'helix/select'"
     },
     {
         "key": "shift+x",
         "command": "dance.select.line.above.extend",
-        "when": "editorTextFocus && dance.mode == 'normal'"
+        "when": "editorTextFocus && dance.mode == 'helix/normal'"
     },
     {
         "key": "b",
@@ -972,12 +972,12 @@
     {
         "key": "ctrl+v",
         "command": "-dance.modes.set.temporarily.normal",
-        "when": "editorTextFocus && dance.mode == 'insert'"
+        "when": "editorTextFocus && dance.mode == 'helix/insert'"
     },
     {
         "key": "ctrl+v",
         "command": "editor.action.clipboardPasteAction",
-        "when": "editorTextFocus && dance.mode == 'insert'"
+        "when": "editorTextFocus && dance.mode == 'helix/insert'"
     },
     {
         "key": "ctrl+v",
@@ -1029,12 +1029,12 @@
                 "dance.dev.setSelectionBehavior",
             ]
         },
-        "when": "editorTextFocus && (dance.mode == 'normal' || dance.mode =='select')"
+        "when": "editorTextFocus && (dance.mode == 'helix/normal' || dance.mode =='helix/select')"
     },
     {
         "key": "\\ p",
         "command": "typst-preview.browser-slide",
-        "when": "editorTextFocus && dance.mode == 'normal'"
+        "when": "editorTextFocus && dance.mode == 'helix/normal'"
     },
     {
         "key": "tab",
@@ -1049,7 +1049,7 @@
     {
         "key": "\\ s",
         "command": "dance.dev.setSelectionBehavior",
-        "when": "editorTextFocus && dance.mode == 'normal'"
+        "when": "editorTextFocus && dance.mode == 'helix/normal'"
     },
     {
         "key": "backspace",
@@ -1084,7 +1084,7 @@
     {
         "key": "enter",
         "command": "oil-code.select",
-        "when": "editorTextFocus && editorLangId == 'oil' && dance.mode == 'normal'"
+        "when": "editorTextFocus && editorLangId == 'oil' && dance.mode == 'helix/normal'"
     },
     {
         "key": "alt+enter",
@@ -1130,13 +1130,13 @@
     {
         "key": "\\ r",
         "command": "rust-analyzer.run",
-        "when": "editorTextFocus && dance.mode == 'normal'"
+        "when": "editorTextFocus && dance.mode == 'helix/normal'"
     },
 
     {
         "key": "shift+s",
         "command": "-dance.selections.split",
-        "when": "editorTextFocus && dance.mode == 'normal'"
+        "when": "editorTextFocus && dance.mode == 'helix/normal'"
     },
     {
         "key": "shift+s",
@@ -1146,7 +1146,7 @@
     {
         "key": "shift+s",
         "command": "dance.match.surround",
-        "when": "editorTextFocus && dance.mode == 'normal'"
+        "when": "editorTextFocus && dance.mode == 'helix/normal'"
     },
     {
         "key": "shift+s",
@@ -1179,7 +1179,7 @@
     {
         "key": "ctrl+u",
         "command": "-dance.select.vertically",
-        "when": "editorTextFocus && dance.mode == 'normal'"
+        "when": "editorTextFocus && dance.mode == 'helix/normal'"
     },
     {
         "key": "ctrl+u",
@@ -1238,5 +1238,40 @@
     {
         "key": "ctrl+shift+f",
         "command": "-fast-fuzzy-finder.open"
-    }
+    },
+    {
+        "key": "shift+x",
+        "command": "dance.ignore",
+        "when": "editorTextFocus && dance.mode == 'heilx/normal'"
+    },
+    {
+        "key": "shift+x",
+        "command": "-dance.ignore",
+        "when": "editorTextFocus && dance.mode == 'helix/normal'"
+    },
+    {
+        "key": "ctrl+d",
+        "command": "-dance.select.vertically",
+        "when": "editorTextFocus && dance.mode == 'helix/normal'"
+    },
+    {
+        "key": "ctrl+d",
+        "command": "-dance.select.vertically",
+        "when": "editorTextFocus && dance.mode == 'helix/insert'"
+    },
+    {
+        "key": "ctrl+d",
+        "command": "-dance.select.vertically",
+        "when": "editorTextFocus && dance.mode == 'helix/select'"
+    },
+    {
+        "key": "ctrl+, k",
+        "command": "editor.action.showHover",
+        "when": "editorTextFocus"
+    },
+    {
+        "key": "ctrl+k ctrl+i",
+        "command": "-editor.action.showHover",
+        "when": "editorTextFocus"
+    },
 ]

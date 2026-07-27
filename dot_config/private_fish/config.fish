@@ -1,9 +1,10 @@
 # ------------------------------------------------------------
-# Global environment (safe for all fish shells)
+#/ Global environment (safe for all fish shells)
 # ------------------------------------------------------------
 set -U fish_greeting
 
-set -gx MANPAGER 'nvim +Man!'
+set -gx MANPAGER qman
+# set -gx MANPAGER 'nvim +Man!'
 set -gx MANWIDTH 999
 #set -gx PAGER /usr/local/bin/moar
 
@@ -19,19 +20,19 @@ set -gx OCAMLRUNPARAM b
 set -gx VCPKG_ROOT /home/fan/code/cpp/vcpkg/
 set -gx ZVM_INSTALL $HOME/.zvm/self
 set -gx ERL_AFLAGS "-kernel shell_history enabled"
+set -x https_proxy http://127.0.0.1:7890
 
-fish_add_path ~/.config/emacs/bin
-fish_add_path ~/.ghcup/bin
-fish_add_path ~/myscripts/
-fish_add_path $VCPKG_ROOT
-fish_add_path $ZVM_INSTALL
-fish_add_path $HOME/.zvm/bin
-fish_add_path $HOME/.moon/bin
-fish_add_path $HOME/.local/bin
-fish_add_path $HOME/bin
-fish_add_path $HOME/.dotnet
-fish_add_path $HOME/.dotnet/tools
-
+fish_add_path ~/.config/emacs/bin \
+    ~/.ghcup/bin \
+    ~/myscripts/ \
+    $VCPKG_ROOT \
+    $ZVM_INSTALL \
+    $HOME/.zvm/bin \
+    $HOME/.moon/bin \
+    $HOME/.local/bin \
+    $HOME/bin \
+    $HOME/.dotnet \
+    $HOME/.dotnet/tools
 if test -r '/home/fan/.opam/opam-init/init.fish'
     source '/home/fan/.opam/opam-init/init.fish' >/dev/null 2>/dev/null
 end
@@ -73,8 +74,68 @@ if status is-interactive
     bind \cw backward-kill-word
     bind \cz 'fg 2> /dev/null'
     bind --erase --all \ec
+    bind \cd _ctrl_d_guard
     fzf --fish | source
-    atuin init fish --disable-up-arrow | source
+    stinkpot init | source
+
+    # --- Don't exit directly when this is the last fish in ghostty ---
+    function _is_last_fish
+        # pids of every fish living inside a ghostty tab/window.
+        # `pstree -T -p (pgrep ghostty)` shows the process tree under each
+        # ghostty process (one ghostty process hosts all its tabs/splits),
+        # so this naturally covers multiple tabs and multiple windows.
+        set -l ghostty_fish
+        set -l gpids (pgrep ghostty)
+        if test (count $gpids) -gt 0
+            set ghostty_fish (pstree -T -p $gpids 2>/dev/null \
+                | string match -arg 'fish\((\d+)\)')
+        end
+
+        # Only guard fish running inside ghostty. Fish elsewhere (e.g. the
+        # VSCode integrated terminal) is managed by its own host, so it is
+        # neither protected nor counted as a backup.
+        contains -- $fish_pid $ghostty_fish; or return 1
+
+        # Another fish still alive inside ghostty? Then we're not the last.
+        for pid in $ghostty_fish
+            test "$pid" -eq $fish_pid; and continue
+            return 1
+        end
+        return 0
+    end
+
+    function _confirm_exit
+        read -l -P '⚠️  Last fish session — really exit? [y/N]: ' confirm
+        if string match -qi -- 'y*' "$confirm"
+            builtin exit $argv
+        end
+        echo "❌ exit canceled"
+        return 1
+    end
+
+    # `exit` command: confirm before leaving the last fish
+    function exit --description 'Exit, confirming when this is the last fish process'
+        if _is_last_fish
+            _confirm_exit $argv
+        else
+            builtin exit $argv
+        end
+    end
+
+    # Ctrl+D: delete char if there's text, otherwise go through the exit guard
+    function _ctrl_d_guard
+        set -l buf (commandline)
+        if test -n "$buf"
+            commandline -f delete-char
+        else if _is_last_fish
+            echo
+            _confirm_exit
+        else
+            builtin exit
+        end
+    end
+    # atuin init fish --disable-up-arrow | source
+
     function virc
         echo "use 'hxrc'"
     end
@@ -116,7 +177,7 @@ if status is-interactive
 
     function chcd
         chezmoi re-add
-        chezmoi cd
+        cd ~/.local/share/chezmoi
     end
 
     function git

@@ -50,6 +50,7 @@
       "other": "off",
       "strings": "off"
     },
+    "editor.defaultFormatter": "haskell.haskell",
   },
   "[python]": {
     "editor.defaultFormatter": "charliermarsh.ruff",
@@ -157,7 +158,7 @@
   // "editor.fontFamily": "'IBM Plex Mono'",
   "editor.fontFamily": "'MonoLisa','Monaspace Argon','Ioskeley Mono'",
 
-  // "editor.fontLigatures": true,
+  "editor.fontLigatures": true,
   "editor.fontSize": 18,
   "editor.fontWeight": "450",
   // "editor.fontFamily": "'Monaspace Argon Medium'",
@@ -399,7 +400,8 @@
     "ms-vscode-remote.vscode-remote-extensionpack",
     "pranjalkumar.minimal-kiwi",
     "github.copilot-chat",
-    "github.copilot"
+    "github.copilot",
+    "gregoire.dance-helix"
   ],
   "terminal.integrated.defaultProfile.linux": "fish",
   "ocaml.server.extraEnv": {
@@ -595,7 +597,7 @@
   "workbench.editor.splitInGroupLayout": "vertical",
   "search.mode": "reuseEditor",
   "workbench.colorCustomizations": {
-    
+
     "searchEditor.findMatchBackground": "#ffff00aa",
     "titleBar.activeBackground": "#f4efef",      // 激活窗口标题栏背景白色
     "titleBar.activeForeground": "#1C1C1C",      // 激活窗口标题栏文字偏黑
@@ -710,21 +712,7 @@
   "task.verboseLogging": true,
   "workbench.preferredDarkColorTheme": "Light 2026",
   "window.customTitleBarVisibility": "windowed",
-  "moonbit.ai.models": [
 
-    {
-      "name": "Claude Sonnect 4",
-      "baseUrl": "https://6c5368d2-e27b-4326-b849-e4bf8ad41f4f.moonbitlang.com",
-      "apiKey": "",
-      "model": "us.anthropic.claude-sonnet-4-20250514-v1:0"
-    },
-    {
-      "name": "GPT-4o",
-      "baseUrl": "https://6c5368d2-e27b-4326-b849-e4bf8ad41f4f.moonbitlang.com",
-      "apiKey": "",
-      "model": "gpt-4o-2024-08-06"
-    }
-  ],
   "zig.zls.path": "/home/fan/.zvm/bin/zls",
   "js/ts.inlayHints.functionLikeReturnTypes.enabled": true,
   "js/ts.inlayHints.enumMemberValues.enabled": true,
@@ -759,6 +747,9 @@
   "editor.bracketPairColorization.independentColorPoolPerBracketType": true,
   "workbench.preferredLightColorTheme": "fan-ellie",
   "editor.unicodeHighlight.nonBasicASCII": false,
+  "dance.smartCase": true,
+  
+  
 
   //  "editor.wordSeparators": "",
 
