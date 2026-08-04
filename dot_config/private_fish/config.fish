@@ -3,7 +3,7 @@
 # ------------------------------------------------------------
 set -U fish_greeting
 
-set -gx MANPAGER qman
+#set -gx MANPAGER qman
 # set -gx MANPAGER 'nvim +Man!'
 set -gx MANWIDTH 999
 #set -gx PAGER /usr/local/bin/moar
@@ -60,6 +60,7 @@ if status is-interactive
 
     alias ls 'eza -snew'
     alias vim nvim
+    alias man qman
     alias open xdg-open
     alias del /bin/rm
     alias rm "echo Use 'del', or the full path i.e. '/bin/rm'"

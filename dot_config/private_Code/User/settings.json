@@ -599,10 +599,10 @@
   "workbench.colorCustomizations": {
 
     "searchEditor.findMatchBackground": "#ffff00aa",
-    "titleBar.activeBackground": "#f4efef",      // 激活窗口标题栏背景白色
-    "titleBar.activeForeground": "#1C1C1C",      // 激活窗口标题栏文字偏黑
-    "titleBar.inactiveBackground": "#F0F0F0",    // 非激活窗口标题栏稍浅的灰色
-    "titleBar.inactiveForeground": "#2C2C2C"     // 非激活窗口标题栏文字偏黑
+    "titleBar.activeBackground": "#f4efef", // 激活窗口标题栏背景白色
+    "titleBar.activeForeground": "#1C1C1C", // 激活窗口标题栏文字偏黑
+    "titleBar.inactiveBackground": "#F0F0F0", // 非激活窗口标题栏稍浅的灰色
+    "titleBar.inactiveForeground": "#2C2C2C" // 非激活窗口标题栏文字偏黑
 
 
   },
@@ -681,9 +681,7 @@
   "python.analysis.typeCheckingMode": "standard",
   "files.associations": {
     "*.c": "c",
-    "*.h": "c",
-    "*.{a80,z80,asm,inc,s}": "asm-collection",
-    "*.{list,lis}": "asm-collection-list"
+    "*.h": "c"
   },
   "csharp.inlayHints.enableInlayHintsForTypes": true,
   "csharp.inlayHints.enableInlayHintsForImplicitObjectCreation": true,
@@ -748,8 +746,9 @@
   "workbench.preferredLightColorTheme": "fan-ellie",
   "editor.unicodeHighlight.nonBasicASCII": false,
   "dance.smartCase": true,
-  
-  
+  "workbench.experimental.modernUI": false,
+
+
 
   //  "editor.wordSeparators": "",
 
