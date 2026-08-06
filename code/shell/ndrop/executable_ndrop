@@ -207,6 +207,31 @@ FOCUS_STATE_FILE="${XDG_RUNTIME_DIR:-/tmp}/ndrop-focus-${CLASS//\//_}"
 
 WINDOW_ID=$(niri msg --json windows | jq -r "first(.[] | select(.app_id==\"$CLASS\") | .id)")
 
+# The 'ndrop' workspace may end up being the visible workspace of its output (e.g. it is
+# the output's first workspace, which is the one shown by default). Hiding the dropdown
+# there would then make it appear on that monitor. Switch that output to another
+# workspace first, and restore focus afterwards.
+hide_ndrop_workspace() {
+  local ndrop_id ndrop_active ndrop_output target_idx
+  ndrop_id=$(niri msg --json workspaces | jq -r ".[] | select(.name==\"ndrop\") | .id" | head -1)
+  [[ -n "$ndrop_id" && "$ndrop_id" != "null" ]] || return 0
+  ndrop_active=$(niri msg --json workspaces | jq -r ".[] | select(.id == $ndrop_id) | .is_active")
+  [[ "$ndrop_active" == "true" ]] || return 0
+  ndrop_output=$(niri msg --json workspaces | jq -r ".[] | select(.id == $ndrop_id) | .output")
+  # Prefer another workspace on that output that still has a window.
+  target_idx=$(niri msg --json workspaces | jq -r "first(.[] | select(.output == \"$ndrop_output\" and .id != $ndrop_id and .active_window_id != null) | .idx)")
+  if [[ -z "$target_idx" || "$target_idx" == "null" ]]; then
+    # Otherwise use any other workspace on that output, or create a fresh one.
+    target_idx=$(niri msg --json workspaces | jq -r "first(.[] | select(.output == \"$ndrop_output\" and .id != $ndrop_id) | .idx)")
+    if [[ -z "$target_idx" || "$target_idx" == "null" ]]; then
+      target_idx=9
+    fi
+  fi
+  niri msg action focus-monitor "$ndrop_output"
+  niri msg action focus-workspace "$target_idx"
+  niri msg action focus-monitor "$ACTIVE_OUTPUT"
+}
+
 ### OVERRIDE ###
 # FOCUS=true
 
@@ -217,6 +242,8 @@ if [[ -n "$workspace_id" && "$workspace_id" != "$ACTIVE_WORKSPACE_ID" ]]; then
     # 'move-window-to-workspace' with an index resolves it on the window's own monitor,
     # so use 'move-window-to-monitor' to move the window to the current monitor's active
     # workspace (works cross-monitor even when both monitors show the same index).
+    # Ensure the hiding workspace is not visible before pulling the dropdown out of it.
+    hide_ndrop_workspace
     # Remember which window has focus, so hiding the dropdown later restores it.
     niri msg --json windows | jq -r "first(.[] | select(.is_focused==true and .id != $WINDOW_ID) | .id)" > "$FOCUS_STATE_FILE"
     niri msg action move-window-to-monitor --id "$WINDOW_ID" "$ACTIVE_OUTPUT" || notify "ndrop: Error moving '$COMMANDLINE' to current workspace"
@@ -247,6 +274,9 @@ elif [[ -n "$workspace_id" && "$workspace_id" == "$ACTIVE_WORKSPACE_ID" ]]; then
         niri msg action focus-window --id "$TARGET_ID"
       fi
     fi
+    # Ensure the hiding workspace is not visible, otherwise the dropdown would appear on
+    # that monitor instead of being hidden.
+    hide_ndrop_workspace
     rm -f "$FOCUS_STATE_FILE"
     # shellcheck disable=SC2086 # integers won't be split
     niri msg action move-window-to-workspace --window-id "$WINDOW_ID" "ndrop" || notify "ndrop: Error moving '$COMMANDLINE' to workspace 'ndrop'"

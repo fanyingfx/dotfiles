@@ -331,8 +331,8 @@ window-rule {
 window-rule {
     match app-id="com.mitchellh.ghostty"
     open-floating true
-    default-column-width { proportion 0.8; }
-    default-window-height { proportion 0.75; }
+    default-column-width { proportion 0.75; }
+    default-window-height { proportion 0.8; }
 }
 
 workspace "ndrop"
