@@ -743,10 +743,10 @@
     "editor.defaultFormatter": "DanielGavin.ols"
   },
   "editor.bracketPairColorization.independentColorPoolPerBracketType": true,
-  "workbench.preferredLightColorTheme": "fan-ellie",
   "editor.unicodeHighlight.nonBasicASCII": false,
   "dance.smartCase": true,
   "workbench.experimental.modernUI": false,
+  "workbench.preferredLightColorTheme": "fan-ellie",
 
 
 

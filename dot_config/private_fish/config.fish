@@ -77,6 +77,7 @@ if status is-interactive
     bind --erase --all \ec
     bind \cd _ctrl_d_guard
     fzf --fish | source
+    # atuin init fish --disable-up-arrow | source
     stinkpot init | source
 
     # --- Don't exit directly when this is the last fish in ghostty ---
@@ -135,7 +136,6 @@ if status is-interactive
             builtin exit
         end
     end
-    # atuin init fish --disable-up-arrow | source
 
     function virc
         echo "use 'hxrc'"

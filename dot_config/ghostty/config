@@ -1,8 +1,4 @@
-quick-terminal-position="center"
-quick-terminal-autohide=false
-keybind=global:alt+q=toggle_quick_terminal
 keybind=ctrl+j=goto_split:previous
-initial-window=false
 background-opacity = 0.9
 window-theme = ghostty
 #theme = Gruvbox Light Hard
@@ -10,4 +6,4 @@ font-family = "UbuntuMono Nerd Font"
 font-size = 16
 gtk-titlebar = false
 shell-integration = fish
-quick-terminal-size=100%,100%
+#quick-terminal-size=100%,100%
