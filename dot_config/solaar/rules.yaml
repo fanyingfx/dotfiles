@@ -1,0 +1,13 @@
+# Solaar 规则:LIFT 滚轮后面的 DPI 切换键 -> niri toggle-overview
+# 原理:该键是 HID++ 虚拟键,不走 evdev,keyd/input-remapper 看不到;
+#       在 solaar 里将其 diversion(拦截),再用规则直接执行 niri msg。
+# 注:KeyPress 注入按键在 Wayland 下不可用,但 Execute(执行命令)完全可用。
+- Rule:
+    - Key:
+        - DPI Switch
+        - pressed
+    - Execute:
+        - niri
+        - msg
+        - action
+        - toggle-overview
