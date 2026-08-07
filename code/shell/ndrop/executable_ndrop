@@ -254,12 +254,12 @@ elif [[ -n "$workspace_id" && "$workspace_id" == "$ACTIVE_WORKSPACE_ID" ]]; then
   if [[ $FOCUS == false ]]; then
     # If the dropdown is focused, restore focus to the window that was focused when it
     # was opened (saved above), instead of jumping to the first window on the workspace.
-    # If that window is gone, fall back to the first other window. If the dropdown is not
-    # focused (e.g. the user clicked another window while it was open), leave the current
-    # focus alone. Focusing a window on the current workspace first also prevents the
-    # keyboard focus from following the moved window to the 'ndrop' workspace, which
-    # would make niri switch the visible workspace there and back, causing a visible
-    # flicker/jitter.
+    # If that window is gone, use niri's own focus history, then fall back to the first
+    # other window. If the dropdown is not focused (e.g. the user clicked another window
+    # while it was open), leave the current focus alone. Focusing a window on the
+    # current workspace first also prevents the keyboard focus from following the moved
+    # window to the 'ndrop' workspace, which would make niri switch the visible
+    # workspace there and back, causing a visible flicker/jitter.
     if [[ $(niri msg --json windows | jq -r "first(.[] | select(.id == $WINDOW_ID) | .is_focused)") == "true" ]]; then
       PREV_WINDOW_ID=$(cat "$FOCUS_STATE_FILE" 2>/dev/null)
       if [[ "$PREV_WINDOW_ID" =~ ^[0-9]+$ ]]; then
@@ -272,6 +272,21 @@ elif [[ -n "$workspace_id" && "$workspace_id" == "$ACTIVE_WORKSPACE_ID" ]]; then
       fi
       if [[ -n "$TARGET_ID" && "$TARGET_ID" != "null" ]]; then
         niri msg action focus-window --id "$TARGET_ID"
+      else
+        # No valid saved window (e.g. first toggle after starting the session, when the
+        # dropdown was opened by autostart rather than by ndrop). Restore focus to the
+        # previously focused window via niri's own focus history, instead of jumping to
+        # the first window on the workspace.
+        niri msg action focus-window-previous
+        # If focus did not leave the dropdown, focus the first other window on the
+        # workspace, so the focus does not follow the moved window to 'ndrop' and cause
+        # a visible flicker/jitter.
+        if [[ $(niri msg --json windows | jq -r "first(.[] | select(.id == $WINDOW_ID) | .is_focused)") == "true" ]]; then
+          TARGET_ID=$(niri msg --json windows | jq -r "first(.[] | select(.workspace_id == $ACTIVE_WORKSPACE_ID and .id != $WINDOW_ID) | .id)")
+          if [[ -n "$TARGET_ID" && "$TARGET_ID" != "null" ]]; then
+            niri msg action focus-window --id "$TARGET_ID"
+          fi
+        fi
       fi
     fi
     # Ensure the hiding workspace is not visible, otherwise the dropdown would appear on
