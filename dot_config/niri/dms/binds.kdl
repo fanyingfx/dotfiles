@@ -1,4 +1,5 @@
 binds {
     Mod+S repeat=false hotkey-overlay-title="Settings: Open" { spawn "dms" "ipc" "call" "settings" "open"; }
+    Mod+V hotkey-overlay-title="Clipboard: Open" { spawn "dms" "ipc" "call" "clipboard" "open"; }
     Alt+R { spawn "fuzzel"; }
 }

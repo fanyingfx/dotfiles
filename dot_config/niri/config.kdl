@@ -7,8 +7,9 @@
 // https://github.com/YaLTeR/niri/wiki/Configuration:-Input
 //
 overview {
-    zoom 0.25
+    zoom 0.4
 }
+
 input {
     keyboard {
         xkb {
@@ -234,6 +235,13 @@ layout {
 // See the binds section below for more spawn examples.
 // spawn-at-startup "alacritty" "-e" "fish"
 spawn-at-startup "kwalletd6"
+// Input method: spawned by niri (not systemd autostart) so it starts only
+// after the Wayland socket is ready, and comes back automatically when
+// niri restarts after a crash. Autostart unit is disabled via
+// ~/.config/autostart/org.fcitx.Fcitx5.desktop (Hidden=true).
+spawn-at-startup "fcitx5"
+// 监听截图目录：niri 内置 screenshot 保存新文件后，把路径复制到剪贴板。
+spawn-at-startup "~/.local/bin/niri-screenshot-path-watcher"
 // Uncomment this line to ask the clients to omit their client-side decorations if possible.
 // If the client will specifically ask for CSD, the request will be honored.
 // Additionally, clients will be informed that they are tiled, removing some client-side rounded corners.
@@ -243,7 +251,7 @@ spawn-at-startup "kwalletd6"
 // You can change the path where screenshots are saved.
 // A ~ at the front will be expanded to the home directory.
 // The path is formatted with strftime(3) to give you the screenshot date and time.
-screenshot-path "~/Pictures/Screenshots/Screenshot from %Y-%m-%d %H-%M-%S.png"
+screenshot-path "~/Pictures/Screenshots/Niri Screenshot from %Y-%m-%d %H-%M-%S.png"
 // You can also set this to null to disable saving screenshots to disk.
 // screenshot-path null
 // Animation settings.
@@ -698,7 +706,7 @@ binds {
         set-window-height "+10%"
     }
     // Move the focused window between the floating and the tiling layout.
-    Mod+V {
+    Alt+F {
         toggle-window-floating
     }
     Mod+Shift+V {
