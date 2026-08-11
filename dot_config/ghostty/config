@@ -7,3 +7,6 @@ font-size = 16
 gtk-titlebar = false
 shell-integration = fish
 #quick-terminal-size=100%,100%
+
+# Vim-mode keybindings live in vim-mode.conf (same directory).
+config-file = vim-mode.conf

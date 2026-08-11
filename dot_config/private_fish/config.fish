@@ -60,6 +60,7 @@ if status is-interactive
 
     alias ls 'eza -snew'
     alias vim nvim
+    abbr hxniri 'hx ~/.config/niri/config.kdl'
     alias man qman
     alias open xdg-open
     alias del /bin/rm
@@ -70,13 +71,12 @@ if status is-interactive
     alias pirun='pi --model zai/glm-4.7 -p'
     alias edit $EDITOR
 
+    fzf --fish | source
     bind \cf forward-word
     bind \cb backward-word
     bind \cw backward-kill-word
     bind \cz 'fg 2> /dev/null'
-    bind --erase --all \ec
     bind \cd _ctrl_d_guard
-    fzf --fish | source
     # atuin init fish --disable-up-arrow | source
     stinkpot init | source
 

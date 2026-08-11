@@ -9,6 +9,11 @@
 overview {
     zoom 0.4
 }
+gestures{
+    hot-corners{
+        off
+    }
+}
 
 input {
     keyboard {
@@ -157,7 +162,9 @@ layout {
         // - RGB hex: "#rgb", "#rgba", "#rrggbb", "#rrggbbaa"
         // - CSS-like notation: "rgb(255, 127, 0)", rgba(), hsl() and a few others.
         // Color of the ring on the active monitor.
-        active-color "#ffA600"
+        active-color "#ffA600" //orange
+        // active-color "#8ca101"
+        // active-color "#7fc8ff"
         // Color of the ring on inactive monitors.
         inactive-color "#505050"
  // You can also use gradients. They take precedence over solid colors.
@@ -240,6 +247,8 @@ spawn-at-startup "kwalletd6"
 // niri restarts after a crash. Autostart unit is disabled via
 // ~/.config/autostart/org.fcitx.Fcitx5.desktop (Hidden=true).
 spawn-at-startup "fcitx5"
+spawn-at-startup "helium-browser"
+spawn-at-startup "solaar" "-w" "hide"
 // 监听截图目录：niri 内置 screenshot 保存新文件后，把路径复制到剪贴板。
 spawn-at-startup "~/.local/bin/niri-screenshot-path-watcher"
 // Uncomment this line to ask the clients to omit their client-side decorations if possible.
@@ -313,6 +322,7 @@ window-rule {
         proportion 0.8
     }
 }
+// use for niri-scratchpad
 workspace "stash"
 binds {
     // Keys consist of modifiers separated by + signs, followed by an XKB key name
@@ -333,9 +343,9 @@ binds {
     Mod+T {
         spawn "kitty"
     }
-    Mod+D {
-        spawn "fuzzel"
-    }
+    // Mod+D {
+    //     spawn "fuzzel"
+    // }
     // Drop terminal: toggle ghostty via ndrop (hides it on workspace "ndrop").
     // Alt+Q { spawn "ndrop" "-c" "com.mitchellh.ghostty" "ghostty"; }
     Alt+Q {
@@ -350,16 +360,23 @@ binds {
     // Example volume keys mappings for PipeWire & WirePlumber.
     // The allow-when-locked=true property makes them work even when the session is locked.
     XF86AudioRaiseVolume allow-when-locked=true {
-        spawn "wpctl" "set-volume" "@DEFAULT_AUDIO_SINK@" "0.1+"
+        spawn "wpctl" "set-volume" "@DEFAULT_AUDIO_SINK@" "0.05+"
     }
     XF86AudioLowerVolume allow-when-locked=true {
-        spawn "wpctl" "set-volume" "@DEFAULT_AUDIO_SINK@" "0.1-"
+        spawn "wpctl" "set-volume" "@DEFAULT_AUDIO_SINK@" "0.05-"
     }
     XF86AudioMute allow-when-locked=true {
         spawn "wpctl" "set-mute" "@DEFAULT_AUDIO_SINK@" "toggle"
     }
     XF86AudioMicMute allow-when-locked=true {
         spawn "wpctl" "set-mute" "@DEFAULT_AUDIO_SOURCE@" "toggle"
+    }
+    // Alt + 鼠标滚轮调节音量。
+    Alt+WheelScrollUp cooldown-ms=100 {
+        spawn "wpctl" "set-volume" "@DEFAULT_AUDIO_SINK@" "0.05+"
+    }
+    Alt+WheelScrollDown cooldown-ms=100 {
+        spawn "wpctl" "set-volume" "@DEFAULT_AUDIO_SINK@" "0.05-"
     }
     Mod+Q {
         close-window

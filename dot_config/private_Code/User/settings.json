@@ -43,6 +43,7 @@
     "editor.defaultFormatter": "yzhang.markdown-all-in-one",
 
 
+
   },
   "[haskell]": {
     "editor.quickSuggestions": {
@@ -93,7 +94,6 @@
   },
   "[typst]": {
     "editor.autoClosingBrackets": "never",
-    "editor.wordSegmenterLocales": "zh-CN",
 
   },
   "[ocaml]": {
@@ -139,6 +139,7 @@
   "diffEditor.wordWrap": "off",
   "editor.bracketPairColorization.enabled": false,
   "editor.cursorSurroundingLines": 8,
+
 
   // Monolisa
   // "editor.fontFamily": "'MonoLisa'",
@@ -187,35 +188,21 @@
     "other": "off",
     "strings": "on"
   },
+
+  "editor.semanticHighlighting.enabled": true,
+
   // SECTION theme config
   "editor.semanticTokenColorCustomizations": {
     "[Light 2026]": {
       "enabled": true,
       "rules": {
         "comment": "#36ad48"
+
       }
 
     },
-    "[fan-ellie]": {
-      "enabled": true,
-      "rules": {
-        "enumMember": "#c26400"
-        //     "class": "#0085c2",
-        //     "type": "#0085c2",
-        //     "struct": "#01a9d2"
 
-      }
-    },
 
-    "[Tokyo Night Storm]": {
-      "enabled": true,
-      "rules": {
-        "type": {
-          "fontStyle": "",
-          "foreground": "#52f8e2",
-        },
-      }
-    },
     "[Minimal Kiwi]": {
       "enabled": true,
       "rules": {
@@ -228,8 +215,8 @@
         "parameter.mutable": "#d1d1d1",
         "method.mutable": "#d1d1d1",
         "arithmetic.mutable": "#89ddff",
-
         "namespace": "#f6cb7ad8",
+
 
         // "variable.fileScope.declaration": "#ff0000"
 
@@ -256,7 +243,7 @@
       "textMateRules": [
         {
           "name": "comments",
-          "scope": [ "comment", "comment punctuation.definition.comment" ],
+          "scope": [ "comment", "comment.line", "comment punctuation.definition.comment" ],
           "settings": {
             "foreground": "#36ad48",
             // "fontStyle": "bold"
@@ -264,6 +251,7 @@
         }
       ]
     },
+
     "[Minimal Kiwi]": {
       "variables": "#D1D1D1",
       "textMateRules": [
@@ -341,7 +329,15 @@
 
     },
   },
-  "editor.semanticHighlighting.enabled": true,
+  "workbench.colorCustomizations": {
+    "searchEditor.findMatchBackground": "#ffff00aa",
+    "titleBar.activeBackground": "#f4efef", // 激活窗口标题栏背景白色
+    "titleBar.activeForeground": "#1C1C1C", // 激活窗口标题栏文字偏黑
+    "titleBar.inactiveBackground": "#F0F0F0", // 非激活窗口标题栏稍浅的灰色
+    "titleBar.inactiveForeground": "#2C2C2C", // 非激活窗口标题栏文字偏黑
+    // "selection.background": "#84ef9d40",
+  },
+
   "editor.wordWrap": "wordWrapColumn",
   "editor.wordWrapColumn": 150,
   "explorer.confirmDelete": false,
@@ -379,6 +375,7 @@
   "terminal.integrated.fontFamily": "'FiraCode Nerd Font','UbuntuMono Nerd Font'",
   // prevent VSCode from modifying the terminal colors
   "terminal.integrated.minimumContrastRatio": 1,
+
   "terminalThemes.style": "Flat (base16)",
   "update.mode": "manual",
   // SECTION vim config
@@ -596,16 +593,6 @@
   "increment-selection.topToBottom": true,
   "workbench.editor.splitInGroupLayout": "vertical",
   "search.mode": "reuseEditor",
-  "workbench.colorCustomizations": {
-
-    "searchEditor.findMatchBackground": "#ffff00aa",
-    "titleBar.activeBackground": "#f4efef", // 激活窗口标题栏背景白色
-    "titleBar.activeForeground": "#1C1C1C", // 激活窗口标题栏文字偏黑
-    "titleBar.inactiveBackground": "#F0F0F0", // 非激活窗口标题栏稍浅的灰色
-    "titleBar.inactiveForeground": "#2C2C2C" // 非激活窗口标题栏文字偏黑
-
-
-  },
   "remote.defaultExtensionsIfInstalledLocally": [
     "GitHub.copilot",
     "GitHub.copilot-chat",
@@ -746,7 +733,7 @@
   "editor.unicodeHighlight.nonBasicASCII": false,
   "dance.smartCase": true,
   "workbench.experimental.modernUI": false,
-  "workbench.preferredLightColorTheme": "fan-ellie",
+  "workbench.preferredLightColorTheme": "Minimal Kiwi Light",
 
 
 
