@@ -52,6 +52,13 @@ end
 # Interactive-only configuration
 # ------------------------------------------------------------
 if status is-interactive
+    # --- Use a light color theme inside VSCode's integrated terminal ---
+    # `fish_terminal_color_theme` is read-only, so we force the light variant
+    # of a theme that ships both light & dark variants.
+    if test "$TERM_PROGRAM" = vscode
+        fish_config theme choose ayu --color-theme=light
+    end
+
     starship init fish | source
     zoxide init fish | source
     jj util completion fish | source

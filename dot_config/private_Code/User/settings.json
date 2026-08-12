@@ -190,152 +190,52 @@
   },
 
   "editor.semanticHighlighting.enabled": true,
-
-  // SECTION theme config
   "editor.semanticTokenColorCustomizations": {
-    "[Light 2026]": {
+    // "enabled": true,
+    "[Minimal Kiwi Light]": {
       "enabled": true,
       "rules": {
-        "comment": "#36ad48"
-
+        "namespace": "#00000099",
+        // "struct": "#cb7300",
+        // "type": "#cb7300"
       }
 
-    },
 
-
-    "[Minimal Kiwi]": {
-      "enabled": true,
-      "rules": {
-        // "operator.controlFlow": "#ff6600",
-        "macroBang": "#ff8800",
-        "macro": "#f2aa58",
-        "enumMember": "#ffb300",
-        "function": "#ECFFFF",
-        "variable.mutable": "#d1d1d1",
-        "parameter.mutable": "#d1d1d1",
-        "method.mutable": "#d1d1d1",
-        "arithmetic.mutable": "#89ddff",
-        "namespace": "#f6cb7ad8",
-
-
-        // "variable.fileScope.declaration": "#ff0000"
-
-      }
-    },
+    }
   },
+
+
   "editor.tokenColorCustomizations": {
-    "[fan-ellie]": {
-      "strings": "#d38901",
-      "textMateRules": [
-        {
-          "scope": [ "markup.fenced_code" ],
-          "settings": {
-            // "foreground": "#FF0000",
-            "fontStyle": ""
-          }
 
-        }
-      ]
+    "[Minimal Kiwi Light]": {
 
-    },
-    "[Light 2026]": {
-      "comments": "#36ad48",
-      "textMateRules": [
-        {
-          "name": "comments",
-          "scope": [ "comment", "comment.line", "comment punctuation.definition.comment" ],
-          "settings": {
-            "foreground": "#36ad48",
-            // "fontStyle": "bold"
-          }
-        }
-      ]
-    },
+      "keywords": {
+        "foreground": "#000000",
+        "fontStyle": "bold"
+      },
+    }
+    //   "textMateRules": [
+    //     {
+    //       "scope": [ "support.function.builtin.zig" ],
+    //       "settings": {
+    //         "fontStyle": "bold"
+    //       }
+    //     },
+    //     {
+    //       "scope": [ "string.quoted.double", "punctuation.definition.string" ],
+    //       "settings": {
+    //         "foreground": "#B57F00CC"
+    //       }
+    //     }
+    //   ]
+    // },
 
-    "[Minimal Kiwi]": {
-      "variables": "#D1D1D1",
-      "textMateRules": [
-        {
-          "scope": "constant.numeric",
-          "settings": {
-            // "foreground": "#f2f0ef"
-          }
-        },
-        {
-          "scope": "markup.underline",
-          "settings": {
-            "foreground": "#00b3ff",
-            // "fontStyle": "bold"
-          }
-        },
-        {
-          "scope": "markup.underline.link",
-          "settings": {
-            "foreground": "#00b3ff",
-            // "fontStyle": "bold"
-          }
-        },
-        {
-          "scope": "keyword.control",
-          "settings": {
-            // "foreground": "#00b3ff",
-            "fontStyle": ""
-          }
-        },
 
-        {
-          "scope": [ "keyword.control.flow", "keyword.control.trycatch.zig" ],
-          "settings": {
-            // "foreground": "#ff9900",
-            "fontStyle": "bold"
-          }
-        },
-        { "scope": "markup.bold",
-          "settings": {
-            "foreground": "#ff9900",
-            // "fontStyle": "bold"
-          },
-        },
-        {
-          "scope": "support.type.property-name.json.comments",
-          "settings": {
-            "foreground": "#F78C6C",
-          }
-        },
-        {
-          "scope": [ "markup.raw.inline.typst", "string.other.raw.typst" ],
-          "settings": {
-            "foreground": "#00d5ff",
-            "fontStyle": "bold"
-          }
-        },
-        {
-          "scope": "storage.modifier",
-          "settings": {
-            "foreground": "#ffa200",
-            // "fontStyle": "bold"
-          }
-        },
-        {
-          "name": "comments",
-          "scope": [ "comment", "comment punctuation.definition.comment" ],
-          "settings": {
-            "foreground": "#5ED464B8",
-            // "fontStyle": "bold"
-          }
-        }
-
-      ]
-
-    },
   },
   "workbench.colorCustomizations": {
-    "searchEditor.findMatchBackground": "#ffff00aa",
-    "titleBar.activeBackground": "#f4efef", // 激活窗口标题栏背景白色
-    "titleBar.activeForeground": "#1C1C1C", // 激活窗口标题栏文字偏黑
-    "titleBar.inactiveBackground": "#F0F0F0", // 非激活窗口标题栏稍浅的灰色
-    "titleBar.inactiveForeground": "#2C2C2C", // 非激活窗口标题栏文字偏黑
-    // "selection.background": "#84ef9d40",
+    // "foreground":"#cb7300"
+
+
   },
 
   "editor.wordWrap": "wordWrapColumn",
@@ -378,8 +278,6 @@
 
   "terminalThemes.style": "Flat (base16)",
   "update.mode": "manual",
-  // SECTION vim config
-  // !SECTION
   "vscodeGoogleTranslate.HoverTranslations": false,
   "window.autoDetectColorScheme": true,
   "workbench.editor.highlightModifiedTabs": true,
