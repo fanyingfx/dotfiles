@@ -188,50 +188,16 @@
     "other": "off",
     "strings": "on"
   },
-
-  "editor.semanticHighlighting.enabled": true,
   "editor.semanticTokenColorCustomizations": {
+    "rules":{
+      "macro":"#B04A1F",
+      "macroBang":"#B04A1F",
+      "method":"#0073C6"
+
+    }
+  },
+// NOTE theme
     // "enabled": true,
-    "[Minimal Kiwi Light]": {
-      "enabled": true,
-      "rules": {
-        "namespace": "#00000099",
-        // "struct": "#cb7300",
-        // "type": "#cb7300"
-      }
-
-
-    }
-  },
-
-
-  "editor.tokenColorCustomizations": {
-
-    "[Minimal Kiwi Light]": {
-
-      "keywords": {
-        "foreground": "#000000",
-        "fontStyle": "bold"
-      },
-    }
-    //   "textMateRules": [
-    //     {
-    //       "scope": [ "support.function.builtin.zig" ],
-    //       "settings": {
-    //         "fontStyle": "bold"
-    //       }
-    //     },
-    //     {
-    //       "scope": [ "string.quoted.double", "punctuation.definition.string" ],
-    //       "settings": {
-    //         "foreground": "#B57F00CC"
-    //       }
-    //     }
-    //   ]
-    // },
-
-
-  },
   "workbench.colorCustomizations": {
     // "foreground":"#cb7300"
 
@@ -631,10 +597,10 @@
   "editor.unicodeHighlight.nonBasicASCII": false,
   "dance.smartCase": true,
   "workbench.experimental.modernUI": false,
-  "workbench.preferredLightColorTheme": "Minimal Kiwi Light",
+  "workbench.preferredLightColorTheme": "Minimal Kiwi Gray",
+  "highlightOnCopy.backgroundColor": "rgba(110, 97, 89, 0.7)",
 
 
 
-  //  "editor.wordSeparators": "",
 
 }
