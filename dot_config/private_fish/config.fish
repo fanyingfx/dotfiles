@@ -84,6 +84,7 @@ if status is-interactive
     bind \cw backward-kill-word
     bind \cz 'fg 2> /dev/null'
     bind \cd _ctrl_d_guard
+    bind \et _trans_cli_bind
     # atuin init fish --disable-up-arrow | source
     stinkpot init | source
 
@@ -141,6 +142,16 @@ if status is-interactive
             _confirm_exit
         else
             builtin exit
+        end
+    end
+
+    # Alt+T: 命令行有文本则翻译文本,空行时翻译剪贴板
+    function _trans_cli_bind
+        set -l buf (commandline -b)
+        if test -n "$buf"
+            trans-cli $buf
+        else
+            trans-cli
         end
     end
 
