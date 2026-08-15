@@ -189,15 +189,27 @@
     "strings": "on"
   },
   "editor.semanticTokenColorCustomizations": {
-    "rules":{
-      "macro":"#B04A1F",
-      "macroBang":"#B04A1F",
-      "method":"#0073C6"
+    "rules": {
+      "macro": "#B04A1F",
+      "macroBang": "#B04A1F",
+      "method": "#0073C6",
+      "enum":"#CB7300",
+      "type":{
+        "fontStyle":""
+      }
 
     }
   },
-// NOTE theme
-    // "enabled": true,
+  "editor.tokenColorCustomizations": {
+    "[Minimal Kiwi Gray]": {
+      "keywords": {
+        "foreground": "#000",
+        "fontStyle": "bold"
+      }
+    }
+  },
+  // NOTE theme
+  // "enabled": true,
   "workbench.colorCustomizations": {
     // "foreground":"#cb7300"
 
@@ -599,6 +611,7 @@
   "workbench.experimental.modernUI": false,
   "workbench.preferredLightColorTheme": "Minimal Kiwi Gray",
   "highlightOnCopy.backgroundColor": "rgba(110, 97, 89, 0.7)",
+  "workbench.editor.useModal": "off",
 
 
 

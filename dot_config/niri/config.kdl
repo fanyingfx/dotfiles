@@ -40,7 +40,7 @@ input {
     // Omitting settings disables them, or leaves them at their default values.
     touchpad {
         // off
-        tap
+        // tap
         // dwt
         // dwtp
         // drag-lock
@@ -315,6 +315,11 @@ match app-id=r#"^org\.gnome\.World\.Secrets$"#
 block-out-from "screen-capture"
 // Use this instead if you want them visible on third-party screenshot tools.
 // block-out-from "screencast"
+}
+// Hide the title bar for the opencode desktop app.
+window-rule {
+    match app-id="ai.opencode.desktop"
+    // decorations none
 }
 // Example: enable rounded corners for all windows.
 // (This example rule is commented out with a "/-" in front.)

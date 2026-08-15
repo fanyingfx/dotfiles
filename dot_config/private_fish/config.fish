@@ -33,8 +33,16 @@ fish_add_path ~/.config/emacs/bin \
     $HOME/bin \
     $HOME/.dotnet \
     $HOME/.dotnet/tools
+
+# nix profile (direnv 等通过 nix 安装的工具)
+fish_add_path ~/.nix-profile/bin
 if test -r '/home/fan/.opam/opam-init/init.fish'
     source '/home/fan/.opam/opam-init/init.fish' >/dev/null 2>/dev/null
+    # 纯 nix 环境（opam 不在 PATH）下跳过钩子，避免每次提示符刷 "Unknown command"
+    function __opam_env_export_eval --on-event fish_prompt
+        command -q opam; or return
+        eval (opam env --shell=fish --readonly 2> /dev/null)
+    end
 end
 
 if test -r $HOME/.api_key.fish
@@ -52,6 +60,9 @@ end
 # Interactive-only configuration
 # ------------------------------------------------------------
 if status is-interactive
+    # --- direnv: 进入项目目录时自动加载 .envrc (nix 环境) ---
+    direnv hook fish | source
+
     # --- Use a light color theme inside VSCode's integrated terminal ---
     # `fish_terminal_color_theme` is read-only, so we force the light variant
     # of a theme that ships both light & dark variants.
@@ -86,10 +97,33 @@ if status is-interactive
     bind \cd _ctrl_d_guard
     bind \et _trans_cli_bind
     # atuin init fish --disable-up-arrow | source
-    stinkpot init | source
+    # stinkpot 是自定义二进制（不在 nixpkgs），纯 nix 环境下跳过初始化；
+    # 钩子函数加运行时守卫，避免每次命令后刷 "Unknown command"
+    if command -q stinkpot
+        stinkpot init | source
+    end
+    function __stinkpot_record --on-event fish_postexec
+        set -l exit_code $status
+        set -l cmd $argv[1]
+        command -q stinkpot; or return
+        if test -n "$cmd"
+            stinkpot add --exit $exit_code -- $cmd
+        end
+    end
+    function __stinkpot_search
+        command -q stinkpot; or return
+        set -l line (commandline)
+        set -l out (stinkpot search -- $line)
+        if test -n "$out"
+            commandline -r -- $out
+        end
+        commandline -f repaint
+    end
 
     # --- Don't exit directly when this is the last fish in ghostty ---
     function _is_last_fish
+        # 纯 nix 环境下没有 pgrep/pstree：视为非 ghostty 场景，直接放行退出
+        command -q pgrep; or return 1
         # pids of every fish living inside a ghostty tab/window.
         # `pstree -T -p (pgrep ghostty)` shows the process tree under each
         # ghostty process (one ghostty process hosts all its tabs/splits),
