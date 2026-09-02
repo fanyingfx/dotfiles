@@ -159,7 +159,7 @@
   // "editor.fontFamily": "'IBM Plex Mono'",
   "editor.fontFamily": "'MonoLisa','Monaspace Argon','Ioskeley Mono'",
 
-  "editor.fontLigatures": true,
+  "editor.fontLigatures": false,
   "editor.fontSize": 18,
   "editor.fontWeight": "450",
   // "editor.fontFamily": "'Monaspace Argon Medium'",
@@ -193,9 +193,9 @@
       "macro": "#B04A1F",
       "macroBang": "#B04A1F",
       "method": "#0073C6",
-      "enum":"#CB7300",
-      "type":{
-        "fontStyle":""
+      "enum": "#CB7300",
+      "type": {
+        "fontStyle": ""
       }
 
     }
@@ -583,7 +583,8 @@
     "editor.quickSuggestions": {
       "strings": true
     },
-    "editor.suggest.insertMode": "replace"
+    "editor.suggest.insertMode": "replace",
+    "editor.defaultFormatter": "vscode.json-language-features"
   },
   "terminal.integrated.commandsToSkipShell": [
     "workbench.actions.view.problems"
@@ -612,6 +613,7 @@
   "workbench.preferredLightColorTheme": "Minimal Kiwi Gray",
   "highlightOnCopy.backgroundColor": "rgba(110, 97, 89, 0.7)",
   "workbench.editor.useModal": "off",
+  "update.showReleaseNotes": false,
 
 
 

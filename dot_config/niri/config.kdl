@@ -74,6 +74,13 @@ input {
     // Focus windows and outputs automatically when moving the mouse into them.
     // Setting max-scroll-amount="0%" makes it work only on windows already fully on screen.
     // focus-follows-mouse max-scroll-amount="0%"
+
+    // Wacom CTL-672 (One by Wacom M) -> Xiaomi 4K
+    tablet {
+        map-to-output "DP-3"
+        left-handed
+        // calibration-matrix 1.0 0.0 0.0 0.0 1.0 0.0
+    }
 }
 // You can configure outputs by their name, which you can find
 // by running `niri msg outputs` while inside a niri instance.
@@ -257,6 +264,7 @@ layout {
 // niri restarts after a crash. Autostart unit is disabled via
 // ~/.config/autostart/org.fcitx.Fcitx5.desktop (Hidden=true).
 spawn-at-startup "fcitx5"
+spawn-at-startup "flipclock"
 // spawn-at-startup "helium-browser"
 spawn-at-startup "solaar" "-w" "hide"
 spawn-at-startup "niri-session-snapshot" "restore"
@@ -267,7 +275,7 @@ spawn-at-startup "~/.local/bin/niri-screenshot-path-watcher"
 // Additionally, clients will be informed that they are tiled, removing some client-side rounded corners.
 // This option will also fix border/focus ring drawing behind some semitransparent windows.
 // After enabling or disabling this, you need to restart the apps for this to take effect.
-// prefer-no-csd
+prefer-no-csd
 // You can change the path where screenshots are saved.
 // A ~ at the front will be expanded to the home directory.
 // The path is formatted with strftime(3) to give you the screenshot date and time.
@@ -288,6 +296,14 @@ animations {
 // Window rules let you adjust behavior for individual windows.
 // Find more information on the wiki:
 // https://github.com/YaLTeR/niri/wiki/Configuration:-Window-Rules
+// 所有新窗口默认最大化（maximize-column，等同 Mod+F 效果：列宽铺满、保留 gaps/边框）。
+// 无 match 的规则匹配一切窗口；个别不想最大化的窗口，
+// 在本条之后追加规则用 open-maximized false 覆盖即可。
+window-rule {
+    // Firefox 画中画保持悬浮，不参与最大化（见下方 PiP 规则）
+    exclude app-id="firefox$" title="^Picture-in-Picture$"
+    open-maximized true
+}
 // Work around WezTerm's initial configure bug
 // by setting an empty default-column-width.
 window-rule {
@@ -323,14 +339,16 @@ window-rule {
 }
 // Example: enable rounded corners for all windows.
 // (This example rule is commented out with a "/-" in front.)
-/-window-rule {
-geometry-corner-radius 12
-clip-to-geometry true
-}
-// Drop terminal (ndrop): ghostty opens floating, centered, at 80% x 75%.
+// /-window-rule {
+// geometry-corner-radius 12
+// clip-to-geometry true
+// }
 window-rule {
     match app-id="com.mitchellh.ghostty"
     open-floating true
+    // 覆盖上方全局规则：ghostty 保持悬浮小窗，不最大化也不全屏
+    open-maximized false
+    open-fullscreen false
     default-column-width {
         proportion 0.75
     }
@@ -359,9 +377,9 @@ binds {
     Mod+T {
         spawn "kitty"
     }
-    // Mod+D {
-    //     spawn "fuzzel"
-    // }
+    Mod+D {
+        spawn "fuzzel"
+    }
     // Drop terminal: toggle ghostty via ndrop (hides it on workspace "ndrop").
     // Alt+Q { spawn "ndrop" "-c" "com.mitchellh.ghostty" "ghostty"; }
     Alt+Q {

@@ -3,6 +3,8 @@
 # ------------------------------------------------------------
 set -U fish_greeting
 
+set -g fish_key_bindings fish_default_key_bindings
+
 #set -gx MANPAGER qman
 # set -gx MANPAGER 'nvim +Man!'
 set -gx MANWIDTH 999
@@ -81,8 +83,9 @@ if status is-interactive
     abbr hxniri 'hx ~/.config/niri/config.kdl'
     alias man qman
     alias open xdg-open
-    alias del /bin/rm
-    alias rm "echo Use 'del', or the full path i.e. '/bin/rm'"
+    alias del 'trash-put'  # 删除默认进回收站（trash-cli）；真删用 /bin/rm
+    alias trash-ls 'trash-list'
+    alias rm "echo 'del' moves to trash (trash-list / trash-restore); real delete: /bin/rm"
     abbr rm_lock 'sudo rm /var/lib/pacman/db.lck'
     abbr zig_watch 'zig build -p -Dno-lib --watch -fincremental --prominent-compile-errors'
     abbr rheo_watch 'rheo watch . --html --open'
@@ -187,6 +190,8 @@ if status is-interactive
         else
             trans-cli
         end
+        # 绑定中运行外部命令产生输出后，必须 repaint 才能回到提示符
+        commandline -f repaint
     end
 
     function virc
@@ -276,3 +281,6 @@ if status is-interactive
         ~/code/python/book_search/check_books.sh
     end
 end
+
+# Added by Kaho installer
+set -gx PATH "/home/fan/.local/share/kaho/bin" $PATH

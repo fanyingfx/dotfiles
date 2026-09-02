@@ -1,7 +1,7 @@
 keybind=ctrl+j=goto_split:previous
 background-opacity = 0.9
 window-theme = ghostty
-#theme = Gruvbox Light Hard
+# theme = Ayu Light
 font-family = "UbuntuMono Nerd Font"
 font-size = 16
 gtk-titlebar = false
