@@ -299,11 +299,10 @@ animations {
 // 所有新窗口默认最大化（maximize-column，等同 Mod+F 效果：列宽铺满、保留 gaps/边框）。
 // 无 match 的规则匹配一切窗口；个别不想最大化的窗口，
 // 在本条之后追加规则用 open-maximized false 覆盖即可。
-window-rule {
-    // Firefox 画中画保持悬浮，不参与最大化（见下方 PiP 规则）
-    exclude app-id="firefox$" title="^Picture-in-Picture$"
-    open-maximized true
-}
+// window-rule {
+//     // Firefox 画中画保持悬浮，不参与最大化（见下方 PiP 规则）
+//     exclude app-id="firefox$" title="^Picture-in-Picture$"
+// }
 // Work around WezTerm's initial configure bug
 // by setting an empty default-column-width.
 window-rule {
