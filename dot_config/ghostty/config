@@ -1,12 +1,13 @@
 keybind=ctrl+j=goto_split:previous
-background-opacity = 0.9
-window-theme = ghostty
-# theme = Ayu Light
+background-opacity = 0.96
+# window-theme = ghostty
+theme = Dayfox
 font-family = "UbuntuMono Nerd Font"
 font-size = 16
 gtk-titlebar = false
-shell-integration = fish
 #quick-terminal-size=100%,100%
+shell-integration = fish
 
 # Vim-mode keybindings live in vim-mode.conf (same directory).
 config-file = vim-mode.conf
+

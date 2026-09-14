@@ -306,7 +306,7 @@
     "ms-toolsai.jupyter": 2,
     "ms-toolsai.jupyter-renderers": 2
   },
-  "terminal.external.linuxExec": "kitty",
+  "terminal.external.linuxExec": "ghostty",
   "terminal.integrated.cwd": "${workspaceFolder}",
   "commentAnchors.tags.matchPrefix": [
     "<!--",
@@ -614,6 +614,7 @@
   "highlightOnCopy.backgroundColor": "rgba(110, 97, 89, 0.7)",
   "workbench.editor.useModal": "off",
   "update.showReleaseNotes": false,
+  "terminal.integrated.cursorBlinking": true,
 
 
 

@@ -13,6 +13,36 @@ overview {
 
 
 }
+recent-windows {
+    // off
+    debounce-ms 750
+
+    open-delay-ms 150
+
+    highlight {
+        active-color "#999999ff"
+        urgent-color "#ff9999ff"
+        padding 30
+        corner-radius 0
+    }
+
+    previews {
+        max-height 480
+        max-scale 0.20
+    }
+
+    binds {
+        Super+Tab         { next-window scope="output"; }
+        Super+Shift+Tab   { previous-window scope="output" ; }
+        Super+grave       { next-window     filter="app-id"; }
+        Super+Shift+grave { previous-window filter="app-id"; }
+
+        Mod+Tab         { next-window scope="output"; }
+        Mod+Shift+Tab   { previous-window scope="output" ; }
+        Mod+grave       { next-window     filter="app-id"; }
+        Mod+Shift+grave { previous-window filter="app-id"; }
+    }
+}
 gestures {
     hot-corners {
         off
@@ -25,6 +55,9 @@ layer-rule {
 }
 
 input {
+    // Switch the mod keys around: use Alt normally, and Super inside a nested window.
+    mod-key "Alt"
+    mod-key-nested "Super"
     keyboard {
         xkb {
  // You can set rules, model, layout, variant and options.
@@ -56,16 +89,6 @@ input {
         // accel-speed 0.2
         // accel-profile "flat"
         // scroll-method "no-scroll"
-
-    }
-    trackpoint {
- // off
-        // natural-scroll
-        // accel-speed 0.2
-        // accel-profile "flat"
-        // scroll-method "on-button-down"
-        // scroll-button 273
-        // middle-emulation
 
     }
  // Uncomment this to make the mouse warp to the center of newly focused windows.
@@ -171,7 +194,7 @@ layout {
     // You can change how the focus ring looks.
     focus-ring {
         // Uncomment this line to disable the focus ring.
-        // off
+        on
         // How many logical pixels the ring extends out from the windows.
         width 4
         // Colors can be set in a variety of ways:
@@ -179,12 +202,16 @@ layout {
         // - RGB hex: "#rgb", "#rgba", "#rrggbb", "#rrggbbaa"
         // - CSS-like notation: "rgb(255, 127, 0)", rgba(), hsl() and a few others.
         // Color of the ring on the active monitor.
-        active-color "#ffA600"
- //orange        // active-color "#8ca101"
+        // active-color "#ffA600"
+        // active-color "#8ca101"
         // active-color "#7fc8ff"
         // Color of the ring on inactive monitors.
+        // active-gradient from="#80c8ff" to="#bbddff" angle=45
+        active-gradient from="#ffbb66" to="#ffc880" angle=45 relative-to="workspace-view"
+
+
         inactive-color "#505050"
- // You can also use gradients. They take precedence over solid colors.
+         // You can also use gradients. They take precedence over solid colors.
         // Gradients are rendered the same as CSS linear-gradient(angle, from, to).
         // The angle is the same as in linear-gradient, and is optional,
         // defaulting to 180 (top-to-bottom gradient).
@@ -299,10 +326,11 @@ animations {
 // 所有新窗口默认最大化（maximize-column，等同 Mod+F 效果：列宽铺满、保留 gaps/边框）。
 // 无 match 的规则匹配一切窗口；个别不想最大化的窗口，
 // 在本条之后追加规则用 open-maximized false 覆盖即可。
-// window-rule {
-//     // Firefox 画中画保持悬浮，不参与最大化（见下方 PiP 规则）
-//     exclude app-id="firefox$" title="^Picture-in-Picture$"
-// }
+window-rule {
+    // Firefox 画中画保持悬浮，不参与最大化（见下方 PiP 规则）
+    exclude app-id="firefox$" title="^Picture-in-Picture$"
+    open-maximized true
+}
 // Work around WezTerm's initial configure bug
 // by setting an empty default-column-width.
 window-rule {
@@ -373,7 +401,7 @@ binds {
         show-hotkey-overlay
     }
     // Suggested binds for running programs: terminal, app launcher, screen locker.
-    Mod+T {
+    Super+T {
         spawn "kitty"
     }
     Mod+D {
@@ -381,7 +409,7 @@ binds {
     }
     // Drop terminal: toggle ghostty via ndrop (hides it on workspace "ndrop").
     // Alt+Q { spawn "ndrop" "-c" "com.mitchellh.ghostty" "ghostty"; }
-    Alt+Q {
+    Mod+Q {
         spawn "niri-scratchpad" "target" "--spawn" "ghostty" "appid" "com.mitchellh.ghostty"
     }
     Super+Alt+L {
@@ -411,7 +439,7 @@ binds {
     Alt+WheelScrollDown cooldown-ms=100 {
         spawn "wpctl" "set-volume" "@DEFAULT_AUDIO_SINK@" "0.05-"
     }
-    Mod+Q {
+    Super+Q {
         close-window
     }
     Mod+Left {
@@ -438,7 +466,7 @@ binds {
     Mod+L {
         focus-column-right
     }
-    Mod+Ctrl+Left {
+    Mod+Shift+H {
         move-column-left
     }
     Mod+Ctrl+Down {
@@ -447,7 +475,7 @@ binds {
     Mod+Ctrl+Up {
         move-window-up
     }
-    Mod+Ctrl+Right {
+    Mod+Shift+L {
         move-column-right
     }
     Mod+Ctrl+H {
@@ -495,18 +523,18 @@ binds {
     Mod+Shift+Right {
         focus-monitor-right
     }
-    Mod+Shift+H {
-        focus-monitor-left
-    }
+    // Mod+Shift+H {
+    //     focus-monitor-left
+    // }
     Mod+Shift+J {
         focus-monitor-down
     }
     Mod+Shift+K {
         focus-monitor-up
     }
-    Mod+Shift+L {
-        focus-monitor-right
-    }
+    // Mod+Shift+L {
+    //     focus-monitor-right
+    // }
     Mod+Shift+Ctrl+Left {
         move-column-to-monitor-left
     }
@@ -543,11 +571,32 @@ binds {
     Mod+Page_Up {
         focus-workspace-up
     }
-    Mod+U {
-        focus-workspace-down
+    // Mod+U {
+    //     focus-workspace-down
+    // }
+    // Mod+I {
+    //     focus-workspace-up
+    // }
+    // Super+A/X/C/V = 全选/剪切/复制/粘贴（发 Ctrl+A/X/C/V 给焦点窗口；终端自动改发 Ctrl+Shift+*）
+    // 脚本：~/.local/bin/niri-copy-paste，注入工具：wtype
+    Mod+A {
+        spawn "/home/fan/.local/bin/niri-copy-paste" "a";
     }
-    Mod+I {
-        focus-workspace-up
+    // 撤销/重做（重做传第二参数 shift → GUI 发 Ctrl+Shift+Z）
+    Mod+Z {
+        spawn "/home/fan/.local/bin/niri-copy-paste" "z";
+    }
+    Mod+Shift+Z {
+        spawn "/home/fan/.local/bin/niri-copy-paste" "z" "shift";
+    }
+    Mod+X {
+        spawn "/home/fan/.local/bin/niri-copy-paste" "x";
+    }
+    Mod+C {
+        spawn "/home/fan/.local/bin/niri-copy-paste" "c";
+    }
+    Mod+V {
+        spawn "/home/fan/.local/bin/niri-copy-paste" "v";
     }
     Mod+Ctrl+Page_Down {
         move-column-to-workspace-down
@@ -711,7 +760,7 @@ binds {
     Mod+Period {
         expel-window-from-column
     }
-    Mod+R {
+    Super+R {
         switch-preset-column-width
     }
     Mod+Shift+R {
@@ -731,7 +780,8 @@ binds {
     Mod+Ctrl+F {
         expand-column-to-available-width
     }
-    Mod+C {
+    // 原 Mod+C，为全局复制键让位（2026-09-06）：Super+C 现在是复制
+    Mod+Shift+C {
         center-column
     }
     // Finer width adjustments.
@@ -765,7 +815,7 @@ binds {
     // Toggle tabbed column display mode.
     // Windows in this column will appear as vertical tabs,
     // rather than stacked on top of each other.
-    Mod+W {
+    Super+W {
         toggle-column-tabbed-display
     }
     // Actions to switch layouts.
@@ -775,14 +825,14 @@ binds {
     // since it will switch twice upon pressing the hotkey (once by xkb, once by niri).
     // Mod+Space       { switch-layout "next"; }
     // Mod+Shift+Space { switch-layout "prev"; }
-    Mod+Shift+S {
-        screenshot
+    Super+Shift+S {
+        screenshot  show-pointer=false;
     }
     Ctrl+Print {
         screenshot-screen
     }
     Alt+Shift+S {
-        screenshot-window
+        screenshot-window  show-pointer=false;
     }
     // Applications such as remote-desktop clients and software KVM switches may
     // request that niri stops processing the keyboard shortcuts defined here
