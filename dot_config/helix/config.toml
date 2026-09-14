@@ -1,0 +1,44 @@
+# theme = "onedark"
+# theme = "kanagawa"
+theme = "flexoki_light"
+[editor]
+line-number = "relative"
+default-yank-register = "+"
+mouse = true
+
+[editor.cursor-shape]
+insert = "bar"
+normal = "block"
+select = "underline"
+
+[editor.file-picker]
+hidden = false
+ignore=false
+
+[keys.normal]
+X = "select_line_above"
+"#" = "toggle_comments"
+"^" = "goto_first_nonwhitespace"
+"$" = "goto_line_end"
+"C-y" = ":yank-diagnostic"
+
+[keys.select]
+"^" = "goto_first_nonwhitespace"
+"$" = "goto_line_end"
+
+[keys.insert]
+# 光标移动
+"C-a" = "goto_line_start"     # readline: beginning-of-line
+"C-e" = "goto_line_end_newline"       # readline: end-of-line
+"C-b" = "move_char_left"      # backward-char
+"C-f" = "move_char_right"     # forward-char
+"A-b" = "move_prev_word_start"# backward-word
+"A-f" = "move_next_word_end"  # forward-word
+
+# 删除
+"C-d" = "delete_char_forward" # delete-char
+"C-h" = "delete_char_backward"# backspace
+"A-d" = "delete_word_forward" # kill-word
+"C-w" = "delete_word_backward"# backward-kill-word
+"C-k" = "kill_to_line_end"    # kill-line
+"C-u" = "kill_to_line_start"  # unix-line-discard
