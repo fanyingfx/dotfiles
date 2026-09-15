@@ -1,0 +1,164 @@
+{
+	"Import std": {
+		"prefix": [ "std" ],
+		"body": [
+			"const std=@import(\"std\");",
+			"$0"
+		],
+	},
+	"dbgfn": {
+		"prefix": [ "dbgfn" ],
+		"body": [ "inline fn dbg(src:std.builtin.SourceLocation,comptime fmt:[]const u8,msg:anytype)void{",
+			"std.debug.print(\"[{s}:{d}:{d}] \" ++ fmt, .{ src.file, src.line, src.column } ++ msg);",
+			"}" ]
+	},
+	"dbg":{
+		"prefix":"!dbg",
+		"body":"dbg(@src(),\"$1\",.{$0});"
+	},
+	"net": {
+		"prefix": [ "net" ],
+		"body": [ "const net=std.net;", "$0" ]
+	},
+	"allocator": {
+		"prefix": [ "allocator" ],
+		"body": [ "const Allocator=std.mem.Allocator;", "$0" ]
+	},
+	"dbga": {
+		"prefix": [ "dbga" ],
+		"body": [
+			"var dbga_instance:std.heap.DebugAllocator(.{}) = .init;",
+			"defer _= dbga_instance.deinit();",
+			"const dbga = dbga_instance.allocator();",
+			"$0"
+		],
+	},
+	"arena": {
+		"prefix": [ "arena" ],
+		"body": [
+			"var arena_instance = std.heap.ArenaAllocator.init($0);",
+			"defer arena_instance.deinit();",
+			"const arena = arena_instance.allocator();",
+			"$0"
+		]
+	},
+	"out": {
+		"prefix": "io",
+		"body": [
+			"var stdout_buf: [ 1024 ]u8 = @splat(0);",
+			"const stdout_file = std.fs.File.stdout();",
+			"var stdout_writer = stdout_file.writerStreaming(&stdout_buf);",
+			"const stdout = &stdout_writer.interface;"
+		]
+	},
+	"main": {
+		"prefix": [ "main" ],
+		"body": [
+			"pub fn main(init:std.process.Init) !void {",
+			"$0",
+			"}",
+		]
+	},
+	"lock": {
+		"prefix": [ "lock" ],
+		"body": [
+			"$0.lock();",
+			"defer $0.unlock();",
+			"$0"
+		]
+	},
+	"log": {
+		"prefix": "log",
+		"body": [
+			"std.debug.print(\"{s}:{d} <{s}> | \",.{@src().file,@src().line,@src().fn_name});",
+			"std.debug.print(\"$1\\n\",.{$0});"
+		]
+	},
+
+	"args": {
+		"prefix": "args",
+		"body": [
+			"const args = try std.process.argsAlloc($1);",
+			"defer std.process.argsFree($1, args);"
+		]
+	},
+	"posix": { "prefix": "posix",
+		"body": [
+			"const linux = std.os.linux;",
+			"const posix = std.posix;"
+		]
+	},
+	"todo": {
+		"prefix": "todo",
+		"body": "@panic(\"TODO\")",
+	},
+	"build": {
+		"body": [
+			"const target = b.standardTargetOptions(.{ });",
+			"const optimize = b.standardOptimizeOption(.{ });",
+			"const exe_mod = b.addModule(\"$0\", .{",
+			".root_source_file = b.path(\"src/main.zig\"),",
+			".target = target,",
+			".optimize = optimize,",
+			"});",
+			"const exe = b.addExecutable(.{",
+			".name = \"$0\",",
+			".root_module = exe_mod,",
+			"});",
+			"b.installArtifact(exe);",
+			"const exe_check = b.addExecutable(.{",
+			".name = \"$0\",",
+			".root_module = exe_mod,",
+			"});",
+			"const check = b.step(\"check\", \"Check if $0 compiles\");",
+			"check.dependOn(&exe_check.step);",
+			"const run_cmd = b.addRunArtifact(exe);",
+			"run_cmd.step.dependOn(b.getInstallStep());",
+			"if (b.args) |args| {",
+			"run_cmd.addArgs(args);}",
+			"const run = b.step(\"run\", \"Run \");",
+			"run.dependOn(&run_cmd.step);",
+		]
+	},
+	"tranc": {
+		"body": [
+
+			"const target = b.standardTargetOptions(.{ });",
+			"const optimize = b.standardOptimizeOption(.{ });",
+
+			"const translate_c = b.addTranslateC(.{",
+			".root_source_file = b.path(\"src/c.h\"),",
+			".target = target,",
+			".optimize = optimize,",
+			"});",
+			"const exe_mod = b.addModule(\"v16demo\", .{",
+			".root_source_file = b.path(\"src/main.zig\"),",
+			".target = target,",
+			".optimize = optimize,",
+			".imports = &.{.{",
+			".name = \"c\",",
+			".module = translate_c.createModule(),",
+			"}},",
+			"});",
+			"const exe = b.addExecutable(.{",
+			".name = \"$0\",",
+			".root_module = exe_mod,",
+			"});",
+			"b.installArtifact(exe);",
+			"const exe_check = b.addExecutable(.{",
+			".name = \"$0\",",
+			".root_module = exe_mod,",
+			"});",
+			"const check = b.step(\"check\", \"Check if $0 compiles\");",
+			"check.dependOn(&exe_check.step);",
+			"const run_cmd = b.addRunArtifact(exe);",
+			"run_cmd.step.dependOn(b.getInstallStep());",
+			"if (b.args) |args| {",
+			"run_cmd.addArgs(args);}",
+			"const run = b.step(\"run\", \"Run \");",
+			"run.dependOn(&run_cmd.step);",
+		]
+	},
+	"empty struct": { "prefix": "..",
+		"body": ".{$0}" }
+}

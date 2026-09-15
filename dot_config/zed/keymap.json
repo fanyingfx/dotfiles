@@ -1,0 +1,118 @@
+// Zed keymap
+//
+// For information on binding keys, see the Zed
+// documentation: https://zed.dev/docs/key-bindings
+//
+// To see the default key bindings run `zed: open default keymap`
+// from the command palette.
+[
+  {
+    "context": "Workspace",
+    "bindings": {
+      // "shift shift": "file_finder::Toggle"
+    },
+  },
+  {
+    // !menu: 不抢占弹出菜单（命令面板/文件查找器）里的查询输入框，
+    // 菜单内 ctrl-n/ctrl-p 落回默认 menu::SelectNext/SelectPrevious，与 down/up 一致
+    // 键位对齐 ~/.config/helix/config.toml 的 [keys.insert]
+    "context": "Editor && vim_mode == insert && !menu",
+    "bindings": {
+      // "j k": "vim::NormalBefore"
+      // 光标移动
+      "ctrl-a": "editor::MoveToBeginningOfLine", // goto_line_start
+      "ctrl-e": "editor::MoveToEndOfLine", // goto_line_end_newline
+      "ctrl-b": "editor::MoveLeft", // move_char_left
+      "ctrl-f": "editor::MoveRight", // move_char_right
+      "alt-b": "editor::MoveToPreviousWordStart", // move_prev_word_start
+      "alt-f": "editor::MoveToNextWordEnd", // move_next_word_end
+      "ctrl-n": "editor::MoveDown",
+      "ctrl-p": "editor::MoveUp",
+      // 删除
+      "ctrl-d": "editor::Delete", // delete_char_forward
+      "ctrl-h": "editor::Backspace", // delete_char_backward
+      "alt-d": "editor::DeleteToNextWordEnd", // kill-word
+      "ctrl-w": "editor::DeleteToPreviousWordStart", // backward-kill-word
+      "ctrl-k": "editor::DeleteToEndOfLine", // kill_to_line_end
+      "ctrl-u": "editor::DeleteToBeginningOfLine", // kill_to_line_start
+    },
+  },
+  {
+    "context": "Workspace",
+    "bindings": {
+      "ctrl-j": "terminal_panel::Toggle",
+    },
+  },
+  {
+    "context": "VimControl && !menu",
+    "unbind": {
+      "ctrl-j": "vim::Down",
+    },
+  },
+  {
+    "context": "(vim_mode == helix_normal || vim_mode == helix_select) && !menu",
+    "unbind": {
+      "ctrl-s": "editor::SaveLocation"
+    }
+  },
+  {
+    // 键位对齐 ~/.config/helix/config.toml 的 [keys.normal] X = "select_line_above"
+    // helix 的 X：向上选择一行（当前行 + 上一行，整行选区）。
+    // Zed 无原生 action，用 V(行选择模式) + 向上一行 组合实现；
+    // 结束在 visual_line 模式，重复按 shift-x 可继续向上扩展（见下一块）。
+    // 注意：count 前缀（如 3 shift-x）会被模式切换吞掉，暂不支持。
+    "context": "vim_mode == helix_normal && !menu",
+    "bindings": {
+      "shift-x": ["vim::ToggleVisualLine", "vim::Up"]
+    }
+  },
+  {
+    // 已在行选择模式时，shift-x 继续向上扩展一行（行式，方向语义正确）
+    "context": "vim_mode == visual_line && !menu",
+    "bindings": {
+      "shift-x": "vim::Up"
+    }
+  },
+  {
+    "context": "vim_mode == insert",
+    "unbind": {
+      "ctrl-s": "editor::ShowSignatureHelp"
+    }
+  },
+  {
+    "context": "vim_mode == literal",
+    "unbind": {
+      "ctrl-d": [
+        "vim::Literal",
+        [
+          "ctrl-d",
+          "\u0004"
+        ]
+      ]
+    }
+  },
+  {
+    "context": "(vim_mode == helix_normal || vim_mode == helix_select) && !menu",
+    "unbind": {
+      "ctrl-c": "editor::ToggleComments"
+    }
+  },
+  {
+    "context": "!Terminal",
+    "bindings": {
+      "ctrl-q":"pane::CloseActiveItem"
+    }
+  },
+  {
+    "context": "vim_mode == normal",
+    "unbind": {
+      "shift-x": "vim::DeleteLeft"
+    }
+  },
+  {
+    "context": "vim_mode == visual",
+    "unbind": {
+      "shift-x": "vim::VisualDeleteLine"
+    }
+  }
+]
