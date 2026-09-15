@@ -14,7 +14,8 @@ set -gx MANWIDTH 999
 set -gx GOPATH $HOME/.go
 set -gx VISUAL /usr/bin/helix
 set -gx EDITOR /usr/bin/helix
-set -gx SYSTEMD_EDITOR /usr/bin/nvim
+set -gx SYSTEMD_EDITOR /usr/bin/helix
+
 set -gx ELECTRON_OZONE_PLATFORM_HINT auto
 set -gx DLPFILE "%(title)s.%(ext)s"
 set -gx DLPFOLDER $HOME/Videos/ytb
