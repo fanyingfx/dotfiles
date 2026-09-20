@@ -101,6 +101,7 @@ if status is-interactive
     bind \cz 'fg 2> /dev/null'
     # bind \cd _ctrl_d_guard
     bind \et _trans_cli_bind
+    bind \ej _yt_dlp_clip
     # atuin init fish --disable-up-arrow | source
     # stinkpot 是自定义二进制（不在 nixpkgs），纯 nix 环境下跳过初始化；
     # 钩子函数加运行时守卫，避免每次命令后刷 "Unknown command"
@@ -136,6 +137,19 @@ if status is-interactive
             trans-cli
         end
         # 绑定中运行外部命令产生输出后，必须 repaint 才能回到提示符
+        commandline -f repaint
+    end
+
+    # Alt+J: 下载剪贴板里的 URL（yt-dlp → $DLPFOLDER/$DLPFILE，配合 ytb-mpv）
+    function _yt_dlp_clip
+        set -l url (string trim (wl-paste 2>/dev/null) | string split -f1 \n)
+        if test -z "$url"
+            echo "yt-dlp: 剪贴板里没有内容"
+            commandline -f repaint
+            return 1
+        end
+        echo "▶ yt-dlp $url → $DLPFOLDER"
+        yt-dlp -P "$DLPFOLDER" -o "$DLPFILE" "$url"
         commandline -f repaint
     end
 

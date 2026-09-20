@@ -290,6 +290,7 @@ layout {
 // after the Wayland socket is ready, and comes back automatically when
 // niri restarts after a crash. Autostart unit is disabled via
 // ~/.config/autostart/org.fcitx.Fcitx5.desktop (Hidden=true).
+// spawn-at-startup "noctalia"
 spawn-at-startup "fcitx5"
 spawn-at-startup "flipclock"
 // spawn-at-startup "helium-browser"
@@ -383,6 +384,26 @@ window-rule {
         proportion 0.8
     }
 }
+window-rule {
+  // Rounded corners for a modern look.
+  geometry-corner-radius 20
+
+  // Clips window contents to the rounded corner boundaries.
+  clip-to-geometry true
+}
+
+// Floating Noctalia settings window.
+window-rule {
+  match app-id="dev.noctalia.Noctalia"
+  open-floating true
+  default-column-width { fixed 1080; }
+  default-window-height { fixed 920; }
+}
+
+debug {
+  // Allows notification actions and window activation from Noctalia.
+  honor-xdg-activation-with-invalid-serial
+}
 // use for niri-scratchpad
 workspace "stash"
 binds {
@@ -457,7 +478,9 @@ binds {
     Mod+H {
         focus-column-left
     }
-    Mod+J {
+    // Alt+J 让给终端 fish（yt-dlp 剪贴板下载）：Mod 键本机为 Alt，
+    // 窗口下移改用显式 Super+J，避免全局拦截 Alt+J
+    Super+J {
         focus-window-down
     }
     Mod+K {
@@ -753,7 +776,7 @@ binds {
         consume-or-expel-window-right
     }
     // Consume one window from the right to the bottom of the focused column.
-    Mod+Comma {
+    Super+Comma {
         consume-window-into-column
     }
     // Expel the bottom window from the focused column to the right.
@@ -857,6 +880,15 @@ binds {
     Mod+Shift+P {
         power-off-monitors
     }
+
+    // Core Noctalia binds
+    // Mod+R { spawn-sh "noctalia msg panel-toggle launcher"; }
+    // Mod+S { spawn-sh "noctalia msg panel-toggle control-center"; }
+    // Mod+Comma { spawn-sh "noctalia msg settings-toggle"; }
+    // Alt+Tab { spawn-sh "noctalia msg window-switcher"; }
+    // Niri has a built-in window switcher you might want to try it to see which one you prefer.
+
+    // Audio & Brightness
 }
 // DMS Include Configs
 include "dms/outputs.kdl"
@@ -864,3 +896,7 @@ include "dms/layout.kdl"
 include "dms/cursor.kdl"
 include "dms/binds.kdl"
 
+
+// include "noctalia.kdl"
+
+// include "noctalia.kdl"
